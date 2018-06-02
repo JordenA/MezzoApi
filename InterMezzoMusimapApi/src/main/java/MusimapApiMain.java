@@ -23,17 +23,13 @@ public class MusimapApiMain {
 		uid= "37BF6FEF-4685-EF3D-0BAA-3256FD0BF933"; // uid of a song
 		String[] arr = {"britney", "pink floyd", "david bowie", "katy perry", "bob marley", "the beatles", "bjork", "barry white", "edith piaf", "nirvana", "jimi hendrix", "justin bieber", "rihanna", "adele", "eminem", "cia", "shakira", "aqua", "prince", "taylor swift"};
 		Api api = new Api();
-		String songArtist= new String();
-		String songName= new String();
-		songArtist= "coldplay";
-		songName= "clocks";
-		
+	
         YouTube youtube = YoutubeApi.getYouTubeService();
         try {
             HashMap<String, String> parameters = new HashMap<>();
             parameters.put("part", "snippet");
             parameters.put("maxResults", "1"); // return only 1 res
-            parameters.put("q", songArtist +" "+ songName); // the song we want to hear
+            parameters.put("q", artist +" "+ track); // the song we want to hear
             parameters.put("type", "video");
 
             YouTube.Search.List searchListByKeywordRequest = youtube.search().list(parameters.get("part").toString());

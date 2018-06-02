@@ -66,7 +66,7 @@ public class YoutubeApi {
     public static Credential authorize() throws IOException {
         // Load client secrets.
         InputStream in =
-        		YoutubeApi.class.getResourceAsStream("/client_secret_926369340313-91h10gilm6kidmorfesjdud1pc46tpjd.apps.googleusercontent.com.json");
+        		YoutubeApi.class.getResourceAsStream("/client_secret.json");
         GoogleClientSecrets clientSecrets =
             GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
