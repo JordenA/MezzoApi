@@ -1139,7 +1139,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		}			
 	}
 	String[] getSongInfoBySongUid(String songUid) throws Exception{ //sets info on one song
-		String[] res= new String[6];
+		String[] res= new String[5];
 		res[0]=getSongMoodsBySongUid(songUid);
 		res[1]=getSongInfluancedFrom(songUid);
 		res[2]=getSongInfluancedTo(songUid);
@@ -1149,9 +1149,10 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		return res;	
 	}
 	
-	String[][] getTenSongsInfo(String[] songUID) throws Exception { 
-		String[][] toReturn= new String[10][6];
-		for(int i=0; i<10; i++) {
+	String[][] getSongsInfo(String[] songUID) throws Exception { // recieve an array of uid's of songs that got like
+		int size= songUID.length;
+		String[][] toReturn= new String[size][5];
+		for(int i=0; i<size; i++) {
 			toReturn[i][0]=getSongMoodsBySongUid(songUID[i]);
 			toReturn[i][1]=getSongInfluancedFrom(songUID[i]);
 			toReturn[i][2]=getSongInfluancedTo(songUID[i]);
@@ -1160,8 +1161,8 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			//toReturn[i][5]=getSongTagsBySongUid(songUID[i]);
 
 		}
-		for(int i=0; i<10; i++) {
-			for (int j=0; j<6; j++) {
+		for(int i=0; i<size; i++) { // print the answer - not necessary
+			for (int j=0; j<5; j++) {
 				System.out.println(toReturn[i][j]);
 			}
 		}
