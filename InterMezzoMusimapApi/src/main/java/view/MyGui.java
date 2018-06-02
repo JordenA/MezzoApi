@@ -164,7 +164,7 @@ public class MyGui extends JFrame {
 		//LISTENERS//
 		
 		//create 20 listeres for JBarr1
-    
+    ////
 		for (int i=0;i<19;i++)
 			{
 				 final int x=i;
