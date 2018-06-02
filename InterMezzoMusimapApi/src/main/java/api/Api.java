@@ -1,3 +1,4 @@
+package api;
 
 import java.io.*;
 import java.net.*;
@@ -1149,8 +1150,19 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		return res;	
 	}
 	
+	int getArraySize(String[] str) {
+		int size=0;
+		for (int i=0;i<str.length;i++) {
+			if(str[i]=="-1") {
+				break;
+			}
+			size++;
+		}
+		return size;
+	}
+	
 	String[][] getSongsInfo(String[] songUID) throws Exception { // recieve an array of uid's of songs that got like
-		int size= songUID.length;
+		int size= getArraySize(songUID);
 		String[][] toReturn= new String[size][5];
 		for(int i=0; i<size; i++) {
 			toReturn[i][0]=getSongMoodsBySongUid(songUID[i]);
