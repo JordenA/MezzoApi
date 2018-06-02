@@ -50,7 +50,7 @@ public class MyGui extends JFrame {
 		//background//   
 		BufferedImage myImage;
 		try {
-			myImage=ImageIO.read(new File("/Users/jordenavni/git/api/InterMezzoMusimapApi/images/newBackground.png")); // CHANGE to get pic from the package
+			myImage=ImageIO.read(new File("C:/Users/Asnat/git/FinalInterMezzoafterMERGE/MezzoApi/InterMezzoMusimapApi/images/newBackground.png")); // CHANGE to get pic from the package
 			f.setContentPane(new ImagePanel(myImage));
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
@@ -79,6 +79,14 @@ public class MyGui extends JFrame {
 	    l3.setForeground(Color.BLACK);
 	    f.add(l3);  
 	    l3.setVisible(false);
+	    
+	    final JLabel l4; //when done choosing
+	    l4=new JLabel("Press if you don't know this song");
+	    l4.setBounds(300,210,600,300);  
+	    l4.setFont(new Font("", Font.BOLD, 14));
+	    l4.setForeground(Color.BLACK);
+	    f.add(l4);  
+	    l4.setVisible(false);
 	    
 	    
 	    final Song s= api.Main.getSong(); //get song from Class Song
@@ -201,7 +209,8 @@ public class MyGui extends JFrame {
 				l2.setVisible(true); //show 2nd Step
 				DisplaySong.setVisible(true);
 				like.setVisible(true); dislike.setVisible(true); //show like and dislike buttons
-				playSong.setVisible(true);
+				playSong.setVisible(true); 
+				l4.setVisible(true);
 			}
 			
 		});
@@ -217,6 +226,7 @@ public class MyGui extends JFrame {
 				DisplaySong.setVisible(true);
 				like.setVisible(true); dislike.setVisible(true); //show like and dislike buttons
 				playSong.setVisible(true);
+				l4.setVisible(true);
 				
 				
 			}
@@ -265,6 +275,7 @@ public class MyGui extends JFrame {
 				DONE.setVisible(false);
 				l3.setVisible(false);
 				playSong.setVisible(false);
+				l4.setVisible(false);
 				
 			}
 		});
