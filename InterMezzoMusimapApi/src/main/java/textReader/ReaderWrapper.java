@@ -69,10 +69,10 @@ public class ReaderWrapper extends AbstractReader {
 		Individual[] toReturn  = new PrideIndividual[20];
 		for(int i = 0; i < strToRead.length ; i++) {
 			Chunk[] mds = CR.randomChunks(moodReader.readChunk(strToRead[i][0]));
-			Chunk[] infBy = CR.randomChunks(InfuencedByReader.readChunk(strToRead[i][1]));
-			Chunk[] infing = CR.randomChunks(InfluencingReader.readChunk(strToRead[i][2]));
-			Chunk[] kywrds = CR.randomChunks(keywordReader.readChunk(strToRead[i][3]));
-			Chunk[] prprts = CR.randomChunks(propertiesReader.readChunk(strToRead[i][4]));
+			Chunk[] infBy = InfuencedByReader.readChunk(strToRead[i][1]);
+			Chunk[] infing = InfluencingReader.readChunk(strToRead[i][2]);
+			Chunk[] kywrds = keywordReader.readChunk(strToRead[i][3]);
+			Chunk[] prprts = propertiesReader.readChunk(strToRead[i][4]);
 			//the new user DNA
 			List<Chunk> newDNA = new LinkedList<Chunk>();
 			//ading all chunks after randomizing and changing them to lists

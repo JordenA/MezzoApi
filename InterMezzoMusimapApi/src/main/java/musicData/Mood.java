@@ -44,7 +44,7 @@ public class Mood {
 	
 	public String getParentName() {
 		if(parent == null) {
-			System.out.println("the mood " + name + " has null parent");
+			//System.out.println("the mood " + name + " has null parent");
 			return "nullParent";
 		}
 		

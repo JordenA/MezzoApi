@@ -3,6 +3,7 @@ package main;
 import model.Model;
 import presenter.Presenter;
 import test.Test;
+import textReader.MoodReader;
 import view.ConsoleView;
 import view.View;
 
@@ -14,6 +15,8 @@ public class Main {
 		View v = new ConsoleView();
 		Presenter p = new Presenter(v, m);
 		p.run();
+		//MoodReader mr = new MoodReader();
+		//mr.readChunk(strToRead);
 	}
 	
 	

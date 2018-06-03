@@ -10,7 +10,8 @@ public abstract class AbstractChunk implements Chunk {
 	AbstractChunk(String name,String UID, String score){
 		this.name = name;
 		this.UID = UID;
-		Double tempDouble = Double.parseDouble(score);
+		score = score.replace("\"", "");
+		Double tempDouble = Double.parseDouble(score.trim());
 		this.score = tempDouble.intValue();
 	}
 	

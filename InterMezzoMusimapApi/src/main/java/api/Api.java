@@ -47,8 +47,8 @@ public class Api {
 		wr.close();
 
 		int responseCode = con.getResponseCode();
-		//System.out.println("\nSending 'POST' request to URL : " + url);
-		//System.out.println("Response Code : " + responseCode);
+		////System.out.println("\nSending 'POST' request to URL : " + url);
+		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
 			BufferedReader in = new BufferedReader(
@@ -62,7 +62,7 @@ public class Api {
 			in.close();
 			
 			//print result
-			//System.out.println(response.toString());
+			////System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -76,7 +76,7 @@ public class Api {
 			in.close();
 		
 			//print result
-			//System.out.println(response.toString());
+			////System.out.println(response.toString());
 			JSONObject json = new JSONObject(response.toString());
 			String token = json.getString("access_token");
 			return token;
@@ -91,7 +91,7 @@ public class Api {
 		}
 		String str = new String();
 		str= s;
-		String url = "https://api.musimap.net/artists/search?limit=3&name="+str+"&influences[0][type]=artist&influences[0][direction]=to&influences[0][uid]=3B970FE1-83BB-4291-4F3E-226FBADEE365&influences[0][importance]=10&reference_provider=qobuz&output=details,references";
+		String url = "https://api.musimap.net/artists/search?limit=1&name="+str+"&influences[0][type]=artist&influences[0][direction]=to&influences[0][uid]=3B970FE1-83BB-4291-4F3E-226FBADEE365&influences[0][importance]=10&reference_provider=qobuz&output=details,references";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
@@ -104,8 +104,8 @@ public class Api {
 		con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 		int responseCode = con.getResponseCode();
-		//System.out.println("\nSending 'GET' request to URL : " + url);
-		//System.out.println("Response Code : " + responseCode);
+		////System.out.println("\nSending 'GET' request to URL : " + url);
+		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
 			BufferedReader in = new BufferedReader(
@@ -119,7 +119,7 @@ public class Api {
 			in.close();
 			
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -133,7 +133,7 @@ public class Api {
 			in.close();
 		
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return response.toString();
 		}		
 	}
@@ -159,8 +159,8 @@ public class Api {
 		con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 		int responseCode = con.getResponseCode();
-		//System.out.println("\nSending 'GET' request to URL : " + url);
-		//System.out.println("Response Code : " + responseCode);
+		////System.out.println("\nSending 'GET' request to URL : " + url);
+		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
 			BufferedReader in = new BufferedReader(
@@ -174,7 +174,7 @@ public class Api {
 			in.close();
 			
 			//print result
-			System.out.println(response.toString());
+			////System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -191,7 +191,7 @@ public class Api {
 			
 			JSONObject json = new JSONObject(response.toString());
 			String uid = json.getJSONArray("results").getJSONObject(0).getString("uid");
-			System.out.println(uid);
+			////System.out.println(uid);
 			return uid;
 		}		
 	}
@@ -204,7 +204,7 @@ String getArtistInfluancedFrom(String s) throws Exception {
 	}
 	String str= new String();
 	str= s;
-	String url = "https://api.musimap.net/artists/search?name="+str+"&influences[0][direction]=from&influences[0][uid]=3B970FE1-83BB-4291-4F3E-226FBADEE365&influences[0][importance]=10&reference_provider=qobuz&output=details,references";
+	String url = "https://api.musimap.net/artists/search?name="+str+"&limit=1&influences[0][direction]=from&influences[0][uid]=3B970FE1-83BB-4291-4F3E-226FBADEE365&influences[0][importance]=10&reference_provider=qobuz&output=details,references";
 	URL obj = new URL(url);
 	HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
@@ -217,8 +217,8 @@ String getArtistInfluancedFrom(String s) throws Exception {
 	con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 	int responseCode = con.getResponseCode();
-	//System.out.println("\nSending 'GET' request to URL : " + url);
-	//System.out.println("Response Code : " + responseCode);
+	////System.out.println("\nSending 'GET' request to URL : " + url);
+	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
 		BufferedReader in = new BufferedReader(
@@ -232,7 +232,7 @@ String getArtistInfluancedFrom(String s) throws Exception {
 		in.close();
 		
 		//print result
-		System.out.println(response.toString());
+		////System.out.println(response.toString());
 		return null;
 	} else {
 		BufferedReader in = new BufferedReader(
@@ -246,7 +246,7 @@ String getArtistInfluancedFrom(String s) throws Exception {
 		in.close();
 	
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		return response.toString();
 	}		
 }
@@ -270,8 +270,8 @@ String getArtistInfluancedFrom(String s) throws Exception {
 		con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 		int responseCode = con.getResponseCode();
-		//System.out.println("\nSending 'GET' request to URL : " + url);
-		//System.out.println("Response Code : " + responseCode);
+		////System.out.println("\nSending 'GET' request to URL : " + url);
+		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
 			BufferedReader in = new BufferedReader(
@@ -285,7 +285,7 @@ String getArtistInfluancedFrom(String s) throws Exception {
 			in.close();
 			
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -299,7 +299,7 @@ String getArtistInfluancedFrom(String s) throws Exception {
 			in.close();
 		
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return response.toString();
 		}		
 
@@ -326,8 +326,8 @@ String getArtistInfluancedFrom(String s) throws Exception {
 		con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 		int responseCode = con.getResponseCode();
-		//System.out.println("\nSending 'GET' request to URL : " + url);
-		//System.out.println("Response Code : " + responseCode);
+		////System.out.println("\nSending 'GET' request to URL : " + url);
+		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
 			BufferedReader in = new BufferedReader(
@@ -341,7 +341,7 @@ String getArtistInfluancedFrom(String s) throws Exception {
 			in.close();
 			
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -355,7 +355,7 @@ String getArtistInfluancedFrom(String s) throws Exception {
 			in.close();
 		
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return response.toString();
 		}		
 
@@ -369,7 +369,7 @@ String getArtistInfluancedFrom(String s) throws Exception {
 		}
 		String str= new String();
 		str= s;
-		String url = "https://api.musimap.net/artists/search?name="+str+"&output=properties";
+		String url = "https://api.musimap.net/artists/search?name="+str+"&limit=1&output=properties";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
@@ -382,8 +382,8 @@ String getArtistInfluancedFrom(String s) throws Exception {
 		con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 		int responseCode = con.getResponseCode();
-		//System.out.println("\nSending 'GET' request to URL : " + url);
-		//System.out.println("Response Code : " + responseCode);
+		////System.out.println("\nSending 'GET' request to URL : " + url);
+		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
 			BufferedReader in = new BufferedReader(
@@ -397,7 +397,7 @@ String getArtistInfluancedFrom(String s) throws Exception {
 			in.close();
 			
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -411,7 +411,7 @@ String getArtistInfluancedFrom(String s) throws Exception {
 			in.close();
 		
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return response.toString();
 		}		
 	}
@@ -436,8 +436,8 @@ String getArtistTags(String s) throws Exception {
 		con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 		int responseCode = con.getResponseCode();
-		//System.out.println("\nSending 'GET' request to URL : " + url);
-		//System.out.println("Response Code : " + responseCode);
+		////System.out.println("\nSending 'GET' request to URL : " + url);
+		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
 			BufferedReader in = new BufferedReader(
@@ -451,7 +451,7 @@ String getArtistTags(String s) throws Exception {
 			in.close();
 			
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -465,7 +465,7 @@ String getArtistTags(String s) throws Exception {
 			in.close();
 		
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return response.toString();
 		}		
 	}
@@ -477,7 +477,7 @@ String getArtistKeywords(String s) throws Exception {
 	}
 	String str= new String();
 	str= s;
-	String url = "https://api.musimap.net/artists/search?name="+str+"&output=keywords";
+	String url = "https://api.musimap.net/artists/search?name="+str+"&limit=1&output=keywords";
 	URL obj = new URL(url);
 	HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
@@ -490,8 +490,8 @@ String getArtistKeywords(String s) throws Exception {
 	con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 	int responseCode = con.getResponseCode();
-	//System.out.println("\nSending 'GET' request to URL : " + url);
-	//System.out.println("Response Code : " + responseCode);
+	////System.out.println("\nSending 'GET' request to URL : " + url);
+	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
 		BufferedReader in = new BufferedReader(
@@ -505,7 +505,7 @@ String getArtistKeywords(String s) throws Exception {
 		in.close();
 		
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		return null;
 	} else {
 		BufferedReader in = new BufferedReader(
@@ -519,7 +519,7 @@ String getArtistKeywords(String s) throws Exception {
 		in.close();
 	
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		return response.toString();
 	}		
  }
@@ -544,8 +544,8 @@ String getArtistMemberships(String s) throws Exception {
 	con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 	int responseCode = con.getResponseCode();
-	//System.out.println("\nSending 'GET' request to URL : " + url);
-	//System.out.println("Response Code : " + responseCode);
+	////System.out.println("\nSending 'GET' request to URL : " + url);
+	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
 		BufferedReader in = new BufferedReader(
@@ -559,7 +559,7 @@ String getArtistMemberships(String s) throws Exception {
 		in.close();
 		
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		return null;
 	} else {
 		BufferedReader in = new BufferedReader(
@@ -573,7 +573,7 @@ String getArtistMemberships(String s) throws Exception {
 		in.close();
 	
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		return response.toString();
 	}		
 }
@@ -598,8 +598,8 @@ String getArtistReferences(String s) throws Exception {
 	con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 	int responseCode = con.getResponseCode();
-	//System.out.println("\nSending 'GET' request to URL : " + url);
-	//System.out.println("Response Code : " + responseCode);
+	////System.out.println("\nSending 'GET' request to URL : " + url);
+	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
 		BufferedReader in = new BufferedReader(
@@ -613,7 +613,7 @@ String getArtistReferences(String s) throws Exception {
 		in.close();
 		
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		return null;
 	} else {
 		BufferedReader in = new BufferedReader(
@@ -627,7 +627,7 @@ String getArtistReferences(String s) throws Exception {
 		in.close();
 	
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		return response.toString();
 	}		
 }
@@ -639,7 +639,7 @@ String getArtistMoods(String s) throws Exception {
 	}
 	String str= new String();
 	str= s;
-	String url = "https://api.musimap.net/artists/search?name="+str+"&limit=5&output=moods";
+	String url = "https://api.musimap.net/artists/search?name="+str+"&limit=1&output=moods";
 	URL obj = new URL(url);
 	HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
@@ -652,8 +652,8 @@ String getArtistMoods(String s) throws Exception {
 	con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 	int responseCode = con.getResponseCode();
-	//System.out.println("\nSending 'GET' request to URL : " + url);
-	//System.out.println("Response Code : " + responseCode);
+	////System.out.println("\nSending 'GET' request to URL : " + url);
+	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
 		BufferedReader in = new BufferedReader(
@@ -667,7 +667,7 @@ String getArtistMoods(String s) throws Exception {
 		in.close();
 		
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		return null;
 	} else {
 		BufferedReader in = new BufferedReader(
@@ -681,7 +681,7 @@ String getArtistMoods(String s) throws Exception {
 		in.close();
 	
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		return response.toString();
 	}		
 }
@@ -704,8 +704,8 @@ String getMoodsHierarchy() throws Exception {
 	con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 	int responseCode = con.getResponseCode();
-	//System.out.println("\nSending 'GET' request to URL : " + url);
-	//System.out.println("Response Code : " + responseCode);
+	////System.out.println("\nSending 'GET' request to URL : " + url);
+	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
 		BufferedReader in = new BufferedReader(
@@ -719,7 +719,7 @@ String getMoodsHierarchy() throws Exception {
 		in.close();
 		
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		return null;
 	} else {
 		BufferedReader in = new BufferedReader(
@@ -733,7 +733,7 @@ String getMoodsHierarchy() throws Exception {
 		in.close();
 	
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		return response.toString();
 	}		
 }
@@ -759,8 +759,8 @@ String getTrackAudioAnalysis(String str) throws Exception {
 	con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 	int responseCode = con.getResponseCode();
-	//System.out.println("\nSending 'GET' request to URL : " + url);
-	//System.out.println("Response Code : " + responseCode);
+	////System.out.println("\nSending 'GET' request to URL : " + url);
+	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
 		BufferedReader in = new BufferedReader(
@@ -774,7 +774,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		in.close();
 		
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		return null;
 	} else {
 		BufferedReader in = new BufferedReader(
@@ -788,7 +788,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		in.close();
 	
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		return response.toString();
 	}		
 
@@ -798,7 +798,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		String[][] toReturn= new String[20][5];
 		for(int i=0; i<20; i++) {
 			toReturn[i][0]=getArtistMoods(artists[i]);
-			toReturn[i][1]=getArtistInfluancedFrom(artists[i]);
+			toReturn[i][1]=getArtistInfluancedTo(artists[i]);
 			toReturn[i][2]=getArtistInfluancedFrom(artists[i]);
 			toReturn[i][3]=getArtistKeywords(artists[i]);
 			toReturn[i][4]=getArtistProperties(artists[i]);
@@ -807,7 +807,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		}
 		for(int i=0; i<20; i++) {
 			for (int j=0; j<5; j++) {
-				System.out.println(toReturn[i][j]);
+				//System.out.println(toReturn[i][j]);
 			}
 		}
 		return toReturn;
@@ -822,7 +822,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		if (token == null) {
 			return null;
 		}
-		String url = "https://api.musimap.net/tracks/search?name="+mySongUid+"&output=moods";
+		String url = "https://api.musimap.net/tracks/search?name="+mySongUid+"&limit=1&output=moods";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
@@ -835,8 +835,8 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 		int responseCode = con.getResponseCode();
-		//System.out.println("\nSending 'GET' request to URL : " + url);
-		//System.out.println("Response Code : " + responseCode);
+		////System.out.println("\nSending 'GET' request to URL : " + url);
+		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
 			BufferedReader in = new BufferedReader(
@@ -850,7 +850,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			in.close();
 			
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -864,7 +864,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			in.close();
 		
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return response.toString();
 		}	
 		
@@ -878,7 +878,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		if (token == null) {
 			return null;
 		}
-		String url = "https://api.musimap.net/tracks/search?name="+mySongUid+"&output=keywords";
+		String url = "https://api.musimap.net/tracks/search?name="+mySongUid+"&limit=1&output=keywords";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
@@ -891,8 +891,8 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 		int responseCode = con.getResponseCode();
-		//System.out.println("\nSending 'GET' request to URL : " + url);
-		//System.out.println("Response Code : " + responseCode);
+		////System.out.println("\nSending 'GET' request to URL : " + url);
+		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
 			BufferedReader in = new BufferedReader(
@@ -906,7 +906,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			in.close();
 			
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -920,7 +920,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			in.close();
 		
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return response.toString();
 		}		
 	}
@@ -946,8 +946,8 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 		int responseCode = con.getResponseCode();
-		//System.out.println("\nSending 'GET' request to URL : " + url);
-		//System.out.println("Response Code : " + responseCode);
+		////System.out.println("\nSending 'GET' request to URL : " + url);
+		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
 			BufferedReader in = new BufferedReader(
@@ -961,7 +961,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			in.close();
 			
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -975,7 +975,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			in.close();
 		
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return response.toString();
 		}		
 	
@@ -988,7 +988,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		if (token == null) {
 			return null;
 		}
-		String url = "https://api.musimap.net/tracks/search?name="+mySongUid+"&output=properties";
+		String url = "https://api.musimap.net/tracks/search?name="+mySongUid+"&limit=1&output=properties";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
@@ -1001,8 +1001,8 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 		int responseCode = con.getResponseCode();
-		//System.out.println("\nSending 'GET' request to URL : " + url);
-		//System.out.println("Response Code : " + responseCode);
+		////System.out.println("\nSending 'GET' request to URL : " + url);
+		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
 			BufferedReader in = new BufferedReader(
@@ -1016,7 +1016,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			in.close();
 			
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -1030,7 +1030,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			in.close();
 		
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return response.toString();
 		}			
 	}
@@ -1041,7 +1041,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		if (token == null) {
 			return null;
 		}
-		String url = "https://api.musimap.net/tracks/search?name="+mySongUid+"&influences[0][type]=artist&influences[0][direction]=to&influences[0][importance]=10&reference_provider=qobuz&output=details,references";
+		String url = "https://api.musimap.net/tracks/search?name="+mySongUid+"&limit=1&influences[0][type]=artist&influences[0][direction]=to&influences[0][importance]=10&reference_provider=qobuz&output=details,references";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
@@ -1054,8 +1054,8 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 		int responseCode = con.getResponseCode();
-		//System.out.println("\nSending 'GET' request to URL : " + url);
-		//System.out.println("Response Code : " + responseCode);
+		////System.out.println("\nSending 'GET' request to URL : " + url);
+		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
 			BufferedReader in = new BufferedReader(
@@ -1069,7 +1069,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			in.close();
 			
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -1083,7 +1083,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			in.close();
 		
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return response.toString();
 		}		
 	
@@ -1096,7 +1096,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		if (token == null) {
 			return null;
 		}
-		String url = "https://api.musimap.net/tracks/search?name="+mySongUid+"&influences[0][direction]=from&influences[0][importance]=10&reference_provider=qobuz&output=details,references";
+		String url = "https://api.musimap.net/tracks/search?name="+mySongUid+"&limit=1&influences[0][direction]=from&influences[0][importance]=10&reference_provider=qobuz&output=details,references";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
@@ -1109,8 +1109,8 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 		int responseCode = con.getResponseCode();
-		//System.out.println("\nSending 'GET' request to URL : " + url);
-		//System.out.println("Response Code : " + responseCode);
+		////System.out.println("\nSending 'GET' request to URL : " + url);
+		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
 			BufferedReader in = new BufferedReader(
@@ -1124,7 +1124,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			in.close();
 			
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -1138,7 +1138,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			in.close();
 		
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return response.toString();
 		}			
 	}
@@ -1178,7 +1178,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		}
 		for(int i=0; i<size; i++) { // print the answer - not necessary
 			for (int j=0; j<5; j++) {
-				System.out.println(toReturn[i][j]);
+				//System.out.println(toReturn[i][j]);
 			}
 		}
 		return toReturn;
@@ -1212,8 +1212,8 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		con.setRequestProperty("Authorization", "Bearer ".concat(new String(encodedBytes)));
 
 		int responseCode = con.getResponseCode();
-		//System.out.println("\nSending 'GET' request to URL : " + url);
-		//System.out.println("Response Code : " + responseCode);
+		////System.out.println("\nSending 'GET' request to URL : " + url);
+		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
 			BufferedReader in = new BufferedReader(
@@ -1227,7 +1227,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			in.close();
 			
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -1241,7 +1241,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			in.close();
 		
 			//print result
-			System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return response.toString();
 		}
 		
