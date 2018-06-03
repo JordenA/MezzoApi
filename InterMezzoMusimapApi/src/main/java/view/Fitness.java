@@ -3,6 +3,8 @@ package view;
 import java.util.ArrayList;
 import java.util.List;
 
+import musicData.Song;
+
 public class Fitness {
 	
 	static List<Song> songList = new ArrayList<Song>();

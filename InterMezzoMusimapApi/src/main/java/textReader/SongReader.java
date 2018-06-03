@@ -36,7 +36,7 @@
 
 package textReader;
 
-import view.Song;
+import musicData.Song;
 
 public class SongReader {
 

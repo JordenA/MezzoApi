@@ -23,12 +23,13 @@ import com.google.api.services.youtube.model.SearchListResponse;
 import api.Api;
 import api.Main;
 import api.YoutubeApi;
+import musicData.Song;
 
 
 
 
 public class MyGui extends JFrame {  
-	
+/**	
 	public static int countChoices=0;
 	public static boolean youtubePlay=false;
 	public static int likeCount=0;
@@ -299,6 +300,8 @@ public class MyGui extends JFrame {
 	
 
 		}
+		
+		**/
 }
 
 

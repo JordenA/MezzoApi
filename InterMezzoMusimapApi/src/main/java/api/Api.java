@@ -5,6 +5,9 @@ import java.net.*;
 import java.util.*;
 import org.json.*;
 
+import DNA.DNA;
+import view.MyGui;
+
 import javax.net.ssl.HttpsURLConnection;
 
 public class Api {
@@ -791,19 +794,19 @@ String getTrackAudioAnalysis(String str) throws Exception {
 
 		
    }
-	String[][] initFirstDNA(String[] artists) throws Exception { // String[] artists recieved from GUI code
-		String[][] toReturn= new String[20][6];
+	public String[][] initFirstDNA(String[] artists) throws Exception { // String[] artists recieved from GUI code
+		String[][] toReturn= new String[20][5];
 		for(int i=0; i<20; i++) {
 			toReturn[i][0]=getArtistMoods(artists[i]);
 			toReturn[i][1]=getArtistInfluancedFrom(artists[i]);
 			toReturn[i][2]=getArtistInfluancedFrom(artists[i]);
 			toReturn[i][3]=getArtistKeywords(artists[i]);
 			toReturn[i][4]=getArtistProperties(artists[i]);
-			toReturn[i][5]=getArtistTags(artists[i]);
+			//toReturn[i][5]=getArtistTags(artists[i]);
 
 		}
 		for(int i=0; i<20; i++) {
-			for (int j=0; j<6; j++) {
+			for (int j=0; j<5; j++) {
 				System.out.println(toReturn[i][j]);
 			}
 		}
@@ -1139,7 +1142,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			return response.toString();
 		}			
 	}
-	String[] getSongInfoBySongUid(String songUid) throws Exception{ //sets info on one song
+	public String[] getSongInfoBySongUid(String songUid) throws Exception{ //sets info on one song
 		String[] res= new String[5];
 		res[0]=getSongMoodsBySongUid(songUid);
 		res[1]=getSongInfluancedFrom(songUid);
@@ -1181,7 +1184,9 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		return toReturn;
 	}
 	
-	String getSongByDNA(Chunk[] dna) throws Exception {
+	public String getSongByDNA(DNA userdna) throws Exception {
+		Chunk[] dna = new Chunk[25];
+		dna = userdna.getDNA().toArray(dna);
 		String token = getToken();
 		if (token == null) {
 			return null;

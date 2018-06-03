@@ -12,18 +12,19 @@ import com.google.api.services.youtube.model.Channel;
 import com.google.api.services.youtube.model.ChannelListResponse;
 import com.google.api.services.youtube.model.SearchListResponse;
 
+import musicData.Song;
+
 //FOR THE GUI
 import java.util.ArrayList;
 import java.util.List;
 import textReader.SongReader;
-import view.Song;
 import view.Fitness;
 import view.MyGui;
 //
 
 
 public class Main {
-
+	/**
 	static int songCounter=0;
 	static Song[] songArr=new Song [10];
 	static boolean check=false;
@@ -115,7 +116,7 @@ public class Main {
 		
 		
 }
-
+**/
 
 
 }
