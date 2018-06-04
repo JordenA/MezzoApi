@@ -10,10 +10,11 @@ public class PropertiesReader extends AbstractReader {
 	public Chunk[] readChunk(String strToRead) {
 		Chunk[] toReturn = new Chunk[3];
 		String results;
-		results = strToRead.substring(strToRead.indexOf("\"properties\":") + 13);
-		if(strToRead.length() < 10) {
-			results = this.getGenericProperties(); 
-		}
+//		results = strToRead.substring(strToRead.indexOf("\"properties\":") + 13);
+//		if(strToRead.length() < 10) {
+//			results = this.getGenericProperties(); 
+//		}
+		results = this.getGenericProperties(); 
 		for(int i = 0; i < toReturn.length ; i++) {
 			results = results.substring(results.indexOf("\"uid\":\"")+ "\"uid\":\"".length());
 			//removing everything from what we want to assign

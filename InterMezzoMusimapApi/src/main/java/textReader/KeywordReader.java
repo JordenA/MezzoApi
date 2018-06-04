@@ -10,11 +10,12 @@ public class KeywordReader extends AbstractReader {
 	public Chunk[] readChunk(String strToRead) {
 		Chunk[] toReturn = new Chunk[6];
 		String helper;
-		if(strToRead.length() < 9) {
-			helper = this.getGeneric();
-		}else {
-			helper = strToRead.substring(strToRead.indexOf("\"keywords\":[{") + "\"keywords\":[{".length());
-		}
+//		if(strToRead.length() < 9) {
+//			helper = this.getGeneric();
+//		}else {
+//			helper = strToRead.substring(strToRead.indexOf("\"keywords\":[{") + "\"keywords\":[{".length());
+//		}
+		helper = this.getGeneric();
 		for(int i = 0; i < toReturn.length ; i++) {
 			helper = helper.substring(helper.indexOf("\"uid\":\"")+ "\"uid\":\"".length());
 			//removing everything from what we want to assign
