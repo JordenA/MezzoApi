@@ -24,7 +24,7 @@ public class InfluencedByReader extends AbstractReader {
 			//creating new empty mood
 			String influencingToAssign = influencing.substring(0, influencing.indexOf("\""));
 			//removing the mood we used
-			influencing = influencing.substring(influencing.indexOf("\"score\":") + 8);
+			influencing = influencing.substring(influencing.indexOf("\"score\":") + "\"score\":".length());
 			String influencingScore = influencing.substring(0, influencing.indexOf("}"));
 			System.out.println(influencingToAssign);
 			System.out.println(influencingScore);

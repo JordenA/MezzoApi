@@ -28,6 +28,7 @@ public class InfluencingReader extends AbstractReader {
 			influencing = influencing.substring(influencing.indexOf("\"score\":") + 8);
 			String influencingScore = influencing.substring(0, influencing.indexOf("}"));
 			System.out.println(influencingToAssign);
+			//influencingToAssign = influencingToAssign.replace("\\u00f6", "o");
 			System.out.println(influencingScore);
 			toReturn[i] = new InfluencingChunk(influencingToAssign, UID, influencingScore);
 		}
