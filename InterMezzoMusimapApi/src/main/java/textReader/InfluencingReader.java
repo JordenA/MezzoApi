@@ -12,11 +12,12 @@ public class InfluencingReader extends AbstractReader {
 	public Chunk[] readChunk(String strToRead) {
 		Chunk[] toReturn = new Chunk[3];
 		String influencing;
-		if(strToRead.length() < 9) {
-			influencing = this.getGeneric();
-		}else {
-			influencing = strToRead.substring(strToRead.lastIndexOf(" \\\"results\\\": ") + 1);
-		}
+//		if(strToRead.length() < 9) {
+//			influencing = this.getGeneric();
+//		}else {
+//			influencing = strToRead.substring(strToRead.lastIndexOf(" \\\"results\\\": ") + 1);
+//		}
+		influencing = this.getGeneric();
 		for(int i = 0; i < 3 ; i++) {
 			influencing = influencing.substring(influencing.indexOf("\"uid\":\"")+ "\"uid\":\"".length());
 			//removing everything from what we want to assign
@@ -28,7 +29,6 @@ public class InfluencingReader extends AbstractReader {
 			influencing = influencing.substring(influencing.indexOf("\"score\":") + 8);
 			String influencingScore = influencing.substring(0, influencing.indexOf("}"));
 			System.out.println(influencingToAssign);
-			//influencingToAssign = influencingToAssign.replace("\\u00f6", "o");
 			System.out.println(influencingScore);
 			toReturn[i] = new InfluencingChunk(influencingToAssign, UID, influencingScore);
 		}
