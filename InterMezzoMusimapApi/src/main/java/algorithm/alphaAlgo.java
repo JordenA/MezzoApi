@@ -26,7 +26,7 @@ public class alphaAlgo implements Algorithm {
 
 
 	Convertor moodConvrtr;
-	MoodHierarchy MH;
+	MoodHierarchy  MH;
 	Date d;
 	Random rand;
 	
