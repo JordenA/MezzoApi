@@ -46,6 +46,7 @@ public class Model {
 	public void createFirstPool(String[][] firstUserInput) {
 		Individual[] firstPool = RR.ReadGenerationChunks(firstUserInput);	
 		currentGeneration = new PrideGeneration(firstPool, MH);	
+		currentGeneration.reproduce(firstPool);
 	}
 	
 	public void repreduce() {

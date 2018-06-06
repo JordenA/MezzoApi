@@ -13,11 +13,12 @@ public class MoodReader extends AbstractReader {
 	public Chunk[] readChunk(String strToRead) {
 		Chunk[] toReturn = new Chunk[30];
 		String mood;
-		if(strToRead.length() < 9) {
-			mood = this.getGenericMood();
-		}else {
-			mood = strToRead.substring(strToRead.indexOf("\"moods\":") + "\"moods\":".length());
-		}
+//		if(strToRead.length() < 9) {
+//			mood = this.getGenericMood();
+//		}else {
+//			mood = strToRead.substring(strToRead.indexOf("\"moods\":") + "\"moods\":".length());
+//		}
+		mood = this.getGenericMood();
 		for(int i = 0; i < 30 ; i++) {
 			if(mood.length() < 9) {
 				break;

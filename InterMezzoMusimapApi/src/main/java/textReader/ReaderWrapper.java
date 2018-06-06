@@ -68,7 +68,7 @@ public class ReaderWrapper extends AbstractReader {
 	public Individual[] ReadGenerationChunks(String[][] strToRead){
 		Individual[] toReturn  = new PrideIndividual[20];
 		for(int i = 0; i < strToRead.length ; i++) {
-			Chunk[] mds = CR.randomChunks(moodReader.readChunk(strToRead[i][0]));
+			Chunk[] mds = /*CR.randomChunks(*/moodReader.readChunk(strToRead[i][0])/*)*/;
 			Chunk[] infBy = InfuencedByReader.readChunk(strToRead[i][1]);
 			Chunk[] infing = InfluencingReader.readChunk(strToRead[i][2]);
 			Chunk[] kywrds = keywordReader.readChunk(strToRead[i][3]);

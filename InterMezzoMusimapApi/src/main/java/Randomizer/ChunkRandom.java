@@ -31,7 +31,7 @@ public class ChunkRandom {
 		}else {
 			if(toChop[0].getClass() == MoodChunk.class) {
 				int randomInt;
-				while(counter > 0) {
+				while(counter > 1) {
 					randomInt = this.rand.nextInt(arraySize);
 					Chunk temp= toChop[randomInt];
 					//adding above mood at place 0

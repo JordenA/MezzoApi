@@ -5,7 +5,7 @@ import java.net.*;
 import java.util.*;
 import org.json.*;
 
-import DNA.DNA;
+import DNA.*;
 import view.MyGui;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -1199,7 +1199,8 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		influenceToRand= rand.nextInt(3)+9;
 		keywordRand= rand.nextInt(6)+12;
 		propRand=rand.nextInt(7)+18;
-		String url = "https://api.musimap.net/tracks/search?moods["+ moodRand +"][uid]="+ dna[moodRand].getUID() +"moods["+ moodRand +"][importance]=70:100|keywords["+ keywordRand+ "][uid]="+ dna[keywordRand].getUID() +"&keywords["+ keywordRand+ "][importance]=70:100|properties["+ propRand +"][uid]="+ dna[propRand].getUID() +"&properties[" +propRand+ "][importance]=70:100|influences[" +influenceFromRand +"][type]=tracks&influences[" +influenceFromRand+ "][direction]=from&influences[" + influenceFromRand + "][importance]=70:100|influences[" + influenceToRand +"][type]=artist&influences[" +influenceToRand+ "][direction]=to&influences[" +influenceToRand+ "][importance]=70:100&output=owners";
+		//String url = "https://api.musimap.net/tracks/search?moods["+ moodRand +"][uid]="+ dna[moodRand].getUID() +"moods["+ moodRand +"][importance]=70:100|keywords["+ keywordRand+ "][uid]="+ dna[keywordRand].getUID() +"&keywords["+ keywordRand+ "][importance]=70:100|properties["+ propRand +"][uid]="+ dna[propRand].getUID() +"&properties[" +propRand+ "][importance]=70:100|influences[" +influenceFromRand +"][type]=tracks&influences[" +influenceFromRand+ "][direction]=from&influences[" + influenceFromRand + "][importance]=70:100|influences[" + influenceToRand +"][type]=artist&influences[" +influenceToRand+ "][direction]=to&influences[" +influenceToRand+ "][importance]=70:100&output=owners";
+		String url="https://api.musimap.net/tracks/search?moods[0][uid]="+ dna[moodRand].getUID()+"&output=owners";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 

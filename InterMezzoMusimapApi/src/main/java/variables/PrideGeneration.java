@@ -15,7 +15,7 @@ public class PrideGeneration implements Generation {
 	public PrideGeneration(MoodHierarchy MH){ 
 		//change from null
 		algo= new alphaAlgo(MH);
-		//pool = this.algo.createFirstPool();
+		//pool = this.algo.createFirstPool(null);
 	}
 	
 	public PrideGeneration(Individual[] firstPool, MoodHierarchy MH){ 
