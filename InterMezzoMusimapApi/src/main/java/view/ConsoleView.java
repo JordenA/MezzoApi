@@ -25,7 +25,8 @@ public class ConsoleView implements View {
 		System.out.println("Choose your favorite artist:"); 
 		for(int i = 0; i < arr1.length; i ++) {
 			System.out.println("1 for " + arr1[i] + " or 2 for " + arr2[i]);
-			int chosen = sc.nextInt();
+			//int chosen = sc.nextInt();
+			int chosen = 1;
 			if(chosen == 1) {
 				toReturn[i] = arr1[i];
 			}else {
@@ -44,7 +45,7 @@ public class ConsoleView implements View {
 			numOfSongs++;
 			System.out.println(toPlay[i].getSongName() +" by " + toPlay[i].getArtistName());
 			int chosen = sc.nextInt();
-			if(i == 1) {
+			if(chosen == 1) {
 				numOfChosen++;
 				toReturn.add(toPlay[i]);
 			}
@@ -59,6 +60,12 @@ public class ConsoleView implements View {
 		}
 		
 		return (numOfChosen*100)/numOfSongs;
+	}
+
+	@Override
+	public void setSongs(Song[] toAssign) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

@@ -868,13 +868,24 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		
    }
 	public String[][] initFirstDNA(String[] artists) throws Exception { // String[] artists recieved from GUI code
+		Date d = new Date();
 		String[][] toReturn= new String[20][5];
 		for(int i=0; i<20; i++) {
+			System.out.println("time started getArtists on itereation " + i + " is " + d.getTime() );
 			toReturn[i][0]=getArtistMoods(artists[i]);
+			System.out.println("time finished getArtists on itereation " + i + " is " + d.getTime() );
+			System.out.println("time started getArtistInfluancedTo on itereation " + i + " is " + d.getTime() );
 			toReturn[i][1]=getArtistInfluancedTo(artists[i]);
+			System.out.println("time finished getArtistInfluancedTo on itereation " + i + " is " + d.getTime() );
+			System.out.println("time started getArtistInfluancedFrom on itereation " + i + " is " + d.getTime() );		
 			toReturn[i][2]=getArtistInfluancedFrom(artists[i]);
+			System.out.println("time finished getArtistInfluancedFrom on itereation " + i + " is " + d.getTime() );
+			System.out.println("time started getArtistKeywords on itereation " + i + " is " + d.getTime() );
 			toReturn[i][3]=getArtistKeywords(artists[i]);
+			System.out.println("time finished getArtistKeywords on itereation " + i + " is " + d.getTime() );
+			System.out.println("time started getArtistProperties on itereation " + i + " is " + d.getTime() );
 			toReturn[i][4]=getArtistProperties(artists[i]);
+			System.out.println("time started getArtistProperties on itereation " + i + " is " + d.getTime() );
 			//toReturn[i][5]=getArtistTags(artists[i]);
 
 		}
