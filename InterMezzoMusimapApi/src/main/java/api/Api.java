@@ -13,8 +13,14 @@ import javax.net.ssl.HttpsURLConnection;
 public class Api {
 
 	private final String USER_AGENT = "Musimap PHP Sample";
+	private final int NUMBER_TRY = 3;
+	private static String Token = null;
+	private static int ForbiddenErrorTry = 0;
 	
 	private String getToken() throws Exception {
+		if (Api.Token != null) {
+			return Api.Token;
+		}
 		String url = "https://api.musimap.net/oauth/access_token";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
@@ -76,9 +82,11 @@ public class Api {
 			in.close();
 		
 			//print result
-			////System.out.println(response.toString());
+			System.out.println(response.toString());
 			JSONObject json = new JSONObject(response.toString());
 			String token = json.getString("access_token");
+			Api.Token = token;
+			Api.ForbiddenErrorTry = 0;
 			return token;
 		}	
 	}
@@ -108,6 +116,11 @@ public class Api {
 		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
+			if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+				Api.Token = null;
+				Api.ForbiddenErrorTry++;
+				this.getArtistInfluancedTo(s);
+			}
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getErrorStream()));
 			String inputLine;
@@ -138,7 +151,7 @@ public class Api {
 		}		
 	}
 	
-	String getArtistUID(String s) throws Exception {
+	 String getArtistUID(String s) throws Exception {
 		
 		String token = getToken();
 		if (token == null) {
@@ -163,6 +176,11 @@ public class Api {
 		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
+			if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+				Api.Token = null;
+				Api.ForbiddenErrorTry++;
+				this.getArtistUID(s);
+			}
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getErrorStream()));
 			String inputLine;
@@ -174,7 +192,7 @@ public class Api {
 			in.close();
 			
 			//print result
-			////System.out.println(response.toString());
+			//System.out.println(response.toString());
 			return null;
 		} else {
 			BufferedReader in = new BufferedReader(
@@ -191,7 +209,7 @@ public class Api {
 			
 			JSONObject json = new JSONObject(response.toString());
 			String uid = json.getJSONArray("results").getJSONObject(0).getString("uid");
-			////System.out.println(uid);
+			System.out.println(uid);
 			return uid;
 		}		
 	}
@@ -221,6 +239,11 @@ String getArtistInfluancedFrom(String s) throws Exception {
 	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
+		if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+			Api.Token = null;
+			Api.ForbiddenErrorTry++;
+			this.getArtistInfluancedFrom(s);
+		}
 		BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getErrorStream()));
 		String inputLine;
@@ -274,6 +297,11 @@ String getArtistInfluancedFrom(String s) throws Exception {
 		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
+			if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+				Api.Token = null;
+				Api.ForbiddenErrorTry++;
+				this.getArtistScore();
+			}
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getErrorStream()));
 			String inputLine;
@@ -330,6 +358,11 @@ String getArtistInfluancedFrom(String s) throws Exception {
 		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
+			if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+				Api.Token = null;
+				Api.ForbiddenErrorTry++;
+				this.getArtistGenre(s);
+			}
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getErrorStream()));
 			String inputLine;
@@ -386,6 +419,11 @@ String getArtistInfluancedFrom(String s) throws Exception {
 		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
+			if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+				Api.Token = null;
+				Api.ForbiddenErrorTry++;
+				this.getArtistProperties(s);
+			}
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getErrorStream()));
 			String inputLine;
@@ -440,6 +478,11 @@ String getArtistTags(String s) throws Exception {
 		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
+			if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+				Api.Token = null;
+				Api.ForbiddenErrorTry++;
+				this.getArtistTags(s);
+			}
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getErrorStream()));
 			String inputLine;
@@ -494,6 +537,11 @@ String getArtistKeywords(String s) throws Exception {
 	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
+		if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+			Api.Token = null;
+			Api.ForbiddenErrorTry++;
+			this.getArtistKeywords(s);
+		}
 		BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getErrorStream()));
 		String inputLine;
@@ -548,6 +596,11 @@ String getArtistMemberships(String s) throws Exception {
 	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
+		if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+			Api.Token = null;
+			Api.ForbiddenErrorTry++;
+			this.getArtistMemberships(s);
+		}
 		BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getErrorStream()));
 		String inputLine;
@@ -602,6 +655,11 @@ String getArtistReferences(String s) throws Exception {
 	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
+		if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+			Api.Token = null;
+			Api.ForbiddenErrorTry++;
+			this.getArtistReferences(s);
+		}
 		BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getErrorStream()));
 		String inputLine;
@@ -656,6 +714,11 @@ String getArtistMoods(String s) throws Exception {
 	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
+		if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+			Api.Token = null;
+			Api.ForbiddenErrorTry++;
+			this.getArtistMoods(s);
+		}
 		BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getErrorStream()));
 		String inputLine;
@@ -708,6 +771,11 @@ String getMoodsHierarchy() throws Exception {
 	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
+		if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+			Api.Token = null;
+			Api.ForbiddenErrorTry++;
+			this.getMoodsHierarchy();
+		}
 		BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getErrorStream()));
 		String inputLine;
@@ -763,6 +831,11 @@ String getTrackAudioAnalysis(String str) throws Exception {
 	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
+		if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+			Api.Token = null;
+			Api.ForbiddenErrorTry++;
+			this.getTrackAudioAnalysis(str);
+		}
 		BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getErrorStream()));
 		String inputLine;
@@ -839,6 +912,11 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
+			if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+				Api.Token = null;
+				Api.ForbiddenErrorTry++;
+				this.getSongMoodsBySongUid(songUid);
+			}
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getErrorStream()));
 			String inputLine;
@@ -895,6 +973,11 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
+			if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+				Api.Token = null;
+				Api.ForbiddenErrorTry++;
+				this.getSongKeywordsBySongUid(songUid);
+			}
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getErrorStream()));
 			String inputLine;
@@ -1005,6 +1088,11 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
+			if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+				Api.Token = null;
+				Api.ForbiddenErrorTry++;
+				this.getSongPropertiesBySongUid(songUid);
+			}
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getErrorStream()));
 			String inputLine;
@@ -1058,6 +1146,11 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
+			if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+				Api.Token = null;
+				Api.ForbiddenErrorTry++;
+				this.getSongInfluancedTo(songUid);
+			}
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getErrorStream()));
 			String inputLine;
@@ -1113,6 +1206,11 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
+			if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+				Api.Token = null;
+				Api.ForbiddenErrorTry++;
+				this.getSongInfluancedFrom(songUid);
+			}
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getErrorStream()));
 			String inputLine;
@@ -1217,6 +1315,11 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		////System.out.println("Response Code : " + responseCode);
 
 		if (responseCode > 200) {
+			if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+				Api.Token = null;
+				Api.ForbiddenErrorTry++;
+				this.getSongByDNA(userdna);
+			}
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getErrorStream()));
 			String inputLine;

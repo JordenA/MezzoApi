@@ -21,6 +21,7 @@ import variables.Generation;
 import variables.Individual;
 import variables.PrideGeneration;
 import variables.PrideIndividual;
+import view.ConsoleView;
 
 public class alphaAlgo implements Algorithm {
 
@@ -39,7 +40,7 @@ public class alphaAlgo implements Algorithm {
 	}
 	@Override
 	public void fitness() {
-		// TODO Auto-generated method stub 
+		ConsoleView.getFitness(); 
 
 	}
 	

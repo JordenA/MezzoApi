@@ -8,9 +8,10 @@ import musicData.Song;
 
 public interface View {
 
-
+	
 	public String[] getPickedArtists();
 	
 	public List<Song> playSongs(Song[] toPlay);
+
 
 }
