@@ -21,7 +21,11 @@ import textReader.SongReader;
 import view.Fitness;
 import view.MyGui;
 //
-
+/**
+ * 
+ * @author Yarden
+ * Main created to check the Api class
+ */
 
 public class Main {
 	/**

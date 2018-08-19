@@ -10,9 +10,18 @@ import org.json.JSONObject;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchListResponse;
-
+/**
+ * 
+ * @author Yarden
+ *this class responsable to open youtube window on google chrome in order to play songs
+ */
 public class YoutubePlay {
-	
+	/**
+	 * 
+	 * @param songNameGUI - string for the name of the song
+	 * @param artistNameGUI - string for the artist name
+	 * @throws IOException
+	 */
 	public static void playYoutube(String songNameGUI,String artistNameGUI) throws IOException {
 		String artist= new String();
 		String track= new String();

@@ -21,7 +21,12 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * 
+ * @author Yarden
+ * this class responsable for the connection to Youtube's API
+ *
+ */
 public class YoutubeApi {
 
     /** Application name. */

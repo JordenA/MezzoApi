@@ -10,12 +10,23 @@ import view.MyGui;
 
 import javax.net.ssl.HttpsURLConnection;
 
+/**
+ * @author Yarden
+ * API class 
+ *this class is responsable for connecting to musimap API.
+ *collects information about artist and songs in order to build to the user playlist by his DNA of music taste
+ */
 public class Api {
 
 	private final String USER_AGENT = "Musimap PHP Sample";
 	private final int NUMBER_TRY = 3;
 	private static String Token = null;
 	private static int ForbiddenErrorTry = 0;
+	/**
+	 * 
+	 * @return String - token for user
+	 * @throws Exception
+	 */
 	
 	private String getToken() throws Exception {
 		if (Api.Token != null) {
@@ -90,6 +101,12 @@ public class Api {
 			return token;
 		}	
 	}
+	/**
+	 * 
+	 * @param s - artist name
+	 * @return String of Influanced to 
+	 * @throws Exception
+	 */
 
 	String getArtistInfluancedTo(String s) throws Exception {
 		
@@ -150,7 +167,12 @@ public class Api {
 			return response.toString();
 		}		
 	}
-	
+	/**
+	 * 
+	 * @param s artist
+	 * @return String of the artist UID
+	 * @throws Exception
+	 */
 	 String getArtistUID(String s) throws Exception {
 		
 		String token = getToken();
@@ -213,7 +235,12 @@ public class Api {
 			return uid;
 		}		
 	}
-
+		/**
+		 * 
+		 * @param s artist
+		 * @return String of the artist influanced from
+		 * @throws Exception
+		 */
 String getArtistInfluancedFrom(String s) throws Exception {
 	
 	String token = getToken();
@@ -273,6 +300,11 @@ String getArtistInfluancedFrom(String s) throws Exception {
 		return response.toString();
 	}		
 }
+/**
+ * 
+ * @return String - the score of top artists
+ * @throws Exception
+ */
 	String getArtistScore() throws Exception {
 
 		
@@ -332,6 +364,12 @@ String getArtistInfluancedFrom(String s) throws Exception {
 		}		
 
 	}
+	/**
+	 * 
+	 * @param s - the artist
+	 * @return String of the artist genres
+	 * @throws Exception
+	 */
 	String getArtistGenre(String s) throws Exception { // recieved albums names - not finish
 
 		String token = getToken();
@@ -394,6 +432,12 @@ String getArtistInfluancedFrom(String s) throws Exception {
 
 	
 	}
+	/**
+	 * 
+	 * @param s - artist
+	 * @return string of artist properties
+	 * @throws Exception
+	 */
 	String getArtistProperties(String s) throws Exception {
 		
 		String token = getToken();
@@ -453,6 +497,12 @@ String getArtistInfluancedFrom(String s) throws Exception {
 			return response.toString();
 		}		
 	}
+	/**
+	 * 
+	 * @param s- artist
+	 * @return String of artist tags
+	 * @throws Exception
+	 */
 String getArtistTags(String s) throws Exception {
 		
 		String token = getToken();
@@ -512,6 +562,12 @@ String getArtistTags(String s) throws Exception {
 			return response.toString();
 		}		
 	}
+/**
+ 
+ * @param s- artist name
+ * @return string of the artist keywords
+ * @throws Exception
+ */
 String getArtistKeywords(String s) throws Exception {
 	
 	String token = getToken();
@@ -571,6 +627,11 @@ String getArtistKeywords(String s) throws Exception {
 		return response.toString();
 	}		
  }
+/**
+ * @param s - artists name
+ * @return String of the artist memberships
+ * @throws Exception
+ */
 String getArtistMemberships(String s) throws Exception {
 	
 	String token = getToken();
@@ -630,6 +691,12 @@ String getArtistMemberships(String s) throws Exception {
 		return response.toString();
 	}		
 }
+/**
+ * 
+ * @param s artist name
+ * @return String of artist refrences
+ * @throws Exception
+ */
 String getArtistReferences(String s) throws Exception {
 	
 	String token = getToken();
@@ -689,6 +756,12 @@ String getArtistReferences(String s) throws Exception {
 		return response.toString();
 	}		
 }
+/**
+ * 
+ * @param s artist name
+ * @return string of artist moods
+ * @throws Exception
+ */
 String getArtistMoods(String s) throws Exception {
 	
 	String token = getToken();
@@ -748,6 +821,11 @@ String getArtistMoods(String s) throws Exception {
 		return response.toString();
 	}		
 }
+/**
+ * 
+ * @return the hierarchy of moods by musimap
+ * @throws Exception
+ */
 String getMoodsHierarchy() throws Exception {
 	
 	String token = getToken();
@@ -805,6 +883,12 @@ String getMoodsHierarchy() throws Exception {
 		return response.toString();
 	}		
 }
+/**
+ * 
+ * @param str song name
+ * @return String of song audio analysis
+ * @throws Exception
+ */
 String getTrackAudioAnalysis(String str) throws Exception {
 
 	
@@ -864,7 +948,10 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		//System.out.println(response.toString());
 		return response.toString();
 	}		
-
+/**
+ * @param array of artists names
+ * @return the first DNA to the algorithm
+ */
 		
    }
 	public String[][] initFirstDNA(String[] artists) throws Exception { // String[] artists recieved from GUI code
@@ -898,7 +985,12 @@ String getTrackAudioAnalysis(String str) throws Exception {
 	}
 	
 
-	
+	/**
+	 * 
+	 * @param songUid - UID of a song 
+	 * @return String of song's moods
+	 * @throws Exception
+	 */
 	String getSongMoodsBySongUid(String songUid) throws Exception {
 		String mySongUid= new String();
 		mySongUid= songUid;
@@ -958,7 +1050,12 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		}	
 		
 	}
-		
+	/**
+	 * 	
+	 * @param songUid - UID of a song
+	 * @return String of the song's keywords
+	 * @throws Exception
+	 */
 	String getSongKeywordsBySongUid(String songUid) throws Exception{
 
 		String mySongUid= new String();
@@ -1075,6 +1172,12 @@ String getTrackAudioAnalysis(String str) throws Exception {
 	
 		
 	}*/
+	/**
+	 * 
+	 * @param songUid - UID of a song
+	 * @return String of the song's properties
+	 * @throws Exception
+	 */
 	String getSongPropertiesBySongUid(String songUid) throws Exception{
         String mySongUid= new String();
 		mySongUid= songUid;
@@ -1133,6 +1236,12 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			return response.toString();
 		}			
 	}
+	/**
+	 * 
+	 * @param songUid - UID of a song
+	 * @return String of the song's influanced to
+	 * @throws Exception  
+	 */
 	String getSongInfluancedTo(String songUid) throws Exception{
 		String mySongUid= new String();
 		mySongUid= songUid;
@@ -1193,6 +1302,12 @@ String getTrackAudioAnalysis(String str) throws Exception {
 	
 		
 	}
+	/**
+	 * 
+	 * @param songUid - UID of a song
+	 * @return String of the song's influanced from
+	 * @throws Exception
+	 */
 	String getSongInfluancedFrom(String songUid) throws Exception{
 		String mySongUid= new String();
 		mySongUid= songUid;
@@ -1251,6 +1366,12 @@ String getTrackAudioAnalysis(String str) throws Exception {
 			return response.toString();
 		}			
 	}
+	/**
+	 * 
+	 * @param songUid- UID of a song
+	 * @return array of strings - each index contains specific info about the song -moods, influance and more
+	 * @throws Exception
+	 */
 	public String[] getSongInfoBySongUid(String songUid) throws Exception{ //sets info on one song
 		String[] res= new String[5];
 		res[0]=getSongMoodsBySongUid(songUid);
@@ -1272,7 +1393,12 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		}
 		return size;
 	}
-	
+	/**
+	 * 
+	 * @param songUID -array of  UIDs of a songs that the user like
+	 * @return information about each song. 
+	 * @throws Exception
+	 */
 	String[][] getSongsInfo(String[] songUID) throws Exception { // recieve an array of uid's of songs that got like
 		int size= getArraySize(songUID);
 		String[][] toReturn= new String[size][5];
@@ -1292,7 +1418,12 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		}
 		return toReturn;
 	}
-	
+	/**
+	 * 
+	 * @param userdna - DNA from the algorithm
+	 * @return song that match the DNA
+	 * @throws Exception
+	 */
 	public String getSongByDNA(DNA userdna) throws Exception {
 		Chunk[] dna = new Chunk[25];
 		dna = userdna.getDNA().toArray(dna);
