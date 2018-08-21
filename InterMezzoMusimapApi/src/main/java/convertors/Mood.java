@@ -1,8 +1,5 @@
 package convertors;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class Mood extends BaseSixtyFourAbstract{
 	
 	private String name;

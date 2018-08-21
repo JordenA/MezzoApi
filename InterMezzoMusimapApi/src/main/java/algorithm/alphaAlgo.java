@@ -1,28 +1,25 @@
 package algorithm;
-import java.net.NetworkInterface;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.Set;
 
+import java.util.Date;
+import java.util.Random;
 import DNA.Chunk;
-import DNA.DNA;
 import DNA.MoodChunk;
-import DNA.PrideDNA;
 import convertors.Convertor;
-import convertors.MoodConvertor;
 import musicData.Mood;
 import musicData.MoodHierarchy;
-import textReader.MoodHierarchyReader;
-import variables.Generation;
 import variables.Individual;
-import variables.PrideGeneration;
 import variables.PrideIndividual;
 import view.ConsoleView;
 
+/**
+ * This class is an implementation of the Algorithm class, it implements it in the lions pride -Alpha manner.
+ * It means that unlike the common genetic algorithem that uses couples, 
+ * this one will use an alphja individual that is the strongest one in the pride,
+ *  and they will repreduce more than other individuals
+ *  
+ * @author Tuval
+ *
+ */
 public class alphaAlgo implements Algorithm {
 
 
@@ -31,34 +28,45 @@ public class alphaAlgo implements Algorithm {
 	Date d;
 	Random rand;
 	
+	/**
+	 * the constructor of the class, will assign the class objects and initialize the others
+	 * @param MH the mood hierarchy that showws how the hierarchy is designed into families
+	 */
 	public alphaAlgo(MoodHierarchy MH){
-		moodConvrtr = new MoodConvertor();
 		this.MH = MH;
 		d = new Date();
 		rand = new Random(d.getTime());
 		
 	}
+	
+	/**
+	 * We choose to determine the score of the generation according to how many times the user swiped yes.
+	 * If the user loved more than X % of what had been offered, that means he loved our suggestion, and that the itereations can be stopped.
+	 */
 	@Override
 	public void fitness() {
 		ConsoleView.getFitness(); 
-
 	}
 	
-	//for now only for first indivdual in first generation
 	@Override
 	public Individual generateIndividual(Chunk[] allQualities) {
+		//creates new PrideIndividual
 		Individual toReturn = new PrideIndividual();
+		//going over all the Chunk and adding them to the new individual
 		for(Chunk c:allQualities) {
 			toReturn.addChunk(c);
 		}
+		
+		//returns the new individual
 		return toReturn;
 	}
 
 	@Override
 	public Individual[] reproduce(Individual[] pickedSongs) {
 		Individual[] toReturn = new PrideIndividual[20];
-		//debug
-		
+		//reprudocing the whole generation by reproducing couples in same ways
+		//the place of the individual in the array determines their status in the group
+		//notice 0 -alpha male
 		if(pickedSongs != null) {
 			toReturn[0] = makeChild(pickedSongs[0],pickedSongs[1]);
 			toReturn[1] = makeChild(pickedSongs[0],pickedSongs[2]);
@@ -78,12 +86,15 @@ public class alphaAlgo implements Algorithm {
 			toReturn[15] = makeChild(pickedSongs[3],pickedSongs[7]);
 			toReturn[16] = makeChild(pickedSongs[3],pickedSongs[2]);
 			toReturn[17] = makeChild(pickedSongs[7],pickedSongs[4]);
+			//places 18 and 19 are the mutations
 			toReturn[18] = makeChild(pickedSongs[6],pickedSongs[4]);
 			toReturn[19] = makeChild(pickedSongs[3],pickedSongs[4]);
 			//creating the mutation
 			toReturn[18] = createMutation(toReturn[18]);
 			toReturn[19] = createMutation(toReturn[19]);
 		}
+		
+		//return the group of individuals
 		return toReturn;	
 		
 	}
@@ -98,26 +109,29 @@ public class alphaAlgo implements Algorithm {
 		return firstPool;
 	}
 	
-	public String getDataFromInput(String input) {
-		/**
-		Map<String, String> ToReturn = new HashMap<String, String>();
-		String[] partsMood = input.split("\\[moods\\]");
-		String afterMoods = partsMood[1];
-		for(int i = 0; i < 10 ; i ++) {
-			ToReturn.put(getSpeficDataFromInput, value)getSpeficDataFromInput
-		}
-		return moodName;
+	@Override
+	public Individual createMutation(Individual indi) {
+		//number of moods in DNA
+		Individual toReturn = indi;
+		int ChunkNumber = rand.nextInt(6);
+		Mood newMood = MH.getDifferentMood(indi.getPrideDNA().getDNA().get(ChunkNumber).getName());
+		toReturn.getPrideDNA().getDNA().add(ChunkNumber, 
+				new MoodChunk(newMood.getName(), newMood.getUID(),
+						Integer.toString(rand.nextInt(100))));
 		
-		**/
-		
-		return null;
+		//returning the new Individual
+		return toReturn;
 	}
 	
-	private Individual makeChild(Individual parentA, Individual parentB) {
-		//making sure no null
-		//debug
-		System.out.println("this are the children of " + parentA + " and " + parentB);
-			
+	/**
+	 * this is the way that two individuals make a child!
+	 * we implement it in a random way, when in every chunk of DNA is picked according to random number
+	 * like in nature, some features are like our faher and some are like our mother
+	 * @param parentA The first parent that will be used to reproduced
+	 * @param parentB The first parent that will be used to reproduced
+	 * @return A new baby child of the two happy parents :)
+	 */
+	private Individual makeChild(Individual parentA, Individual parentB) {		
 		Individual toReturn = new PrideIndividual();
 		int iterationNumberA = parentA.getPrideDNA().getDNA().size();
 		int iterationNumberB = parentB.getPrideDNA().getDNA().size();
@@ -135,24 +149,8 @@ public class alphaAlgo implements Algorithm {
 		System.out.println("this is the child "+ toReturn.getPrideDNA().getDNA());
 		return toReturn;
 	}
-	@Override
-	public Individual createMutation(Individual indi) {
-		//number of moods in DNA
-		Individual toReturn = indi;
-		int ChunkNumber = rand.nextInt(6);
-		Mood newMood = MH.getDifferentMood(indi.getPrideDNA().getDNA().get(ChunkNumber).getName());
-		toReturn.getPrideDNA().getDNA().add(ChunkNumber, 
-				new MoodChunk(newMood.getName(), newMood.getUID(),
-						Integer.toString(rand.nextInt(100))));
-		
-		//returning the new Individual
-		return toReturn;
-	}
-	@Override
-	public Generation createFirstGeneration(String[][] userInput) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+
 
 	
 	

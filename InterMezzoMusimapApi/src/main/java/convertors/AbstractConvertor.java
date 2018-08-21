@@ -3,8 +3,14 @@ package convertors;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This is a class the can convert from a name of a Mood to the Base64 UID
+ * @author Tuval
+ *
+ */
 public class AbstractConvertor implements Convertor {
 	
+	//this is the map of the UID and names
 	Map<String, BaseSixtyFour> myMap;
 	
 	AbstractConvertor(){
@@ -29,6 +35,7 @@ public class AbstractConvertor implements Convertor {
 		myMap.put("inspired", inspiredMood);
 		
 	}
+
 	public BaseSixtyFour getUID(String name) {
 		
 		if(myMap.containsKey(name)){

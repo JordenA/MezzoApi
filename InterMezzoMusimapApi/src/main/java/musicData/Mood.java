@@ -1,13 +1,24 @@
 package musicData;
 
-import convertors.BaseSixtyFour;
-
+/**
+ * This class represents the Mood type as it is in the Musimap API
+ * we build them as a hireracy in the way that they have parents and catagories
+ * 
+ * @author Tuval
+ *
+ */
 public class Mood {
 	private Category cat; 
 	private String name;
 	private String UID;
 	private Mood parent;
 	
+	/**
+	 * 
+	 * @param moodName
+	 * @param UID
+	 * @param moodParent
+	*/
 	public Mood(String moodName,String UID, Mood moodParent) {
 		this.UID = UID;
 		this.name= moodName;
@@ -25,23 +36,42 @@ public class Mood {
 		}
 	}
 
-	
+	/**
+	 * 
+	 * @param parentMood
+	 */
 	public void setParent(Mood parentMood) {
 		this.parent = parentMood;
 	}
 	
+	/**
+	 * 
+	 * @param parentMood
+	 */
 	public void removeParent(Mood parentMood) {
 		this.parent = null;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Category getCategory() {
 		return this.cat;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getParentName() {
 		if(parent == null) {
 			//System.out.println("the mood " + name + " has null parent");
@@ -51,10 +81,20 @@ public class Mood {
 		return parent.getName();
 	}
 	
+	/**
+	 * 
+	 * @author Tuval
+	 *
+	 */
 	public enum Category{
 		ABOVE, DOWN, IN, ON, OUT, UP
 	}
 	
+	/**
+	 * 
+	 * @param parentName
+	 * @return
+	 */
 	private Category getCategory(String parentName) {
 		if(parentName.equals("Up (Air)")) {
 			return Category.UP;
@@ -74,6 +114,11 @@ public class Mood {
 			
 	}
 	
+	/**
+	 * 
+	 * @param name
+	 * @return
+	 */
 	private Category getNewCategory(String name) {
 		if(name.equals("Up (Air)")) {
 			return Category.UP;
@@ -93,6 +138,10 @@ public class Mood {
 			
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getUID() {
 		return this.UID;
 	}
