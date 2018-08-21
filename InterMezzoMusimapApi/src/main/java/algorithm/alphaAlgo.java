@@ -57,6 +57,8 @@ public class alphaAlgo implements Algorithm {
 	@Override
 	public Individual[] reproduce(Individual[] pickedSongs) {
 		Individual[] toReturn = new PrideIndividual[20];
+		//debug
+		
 		if(pickedSongs != null) {
 			toReturn[0] = makeChild(pickedSongs[0],pickedSongs[1]);
 			toReturn[1] = makeChild(pickedSongs[0],pickedSongs[2]);
@@ -82,7 +84,6 @@ public class alphaAlgo implements Algorithm {
 			toReturn[18] = createMutation(toReturn[18]);
 			toReturn[19] = createMutation(toReturn[19]);
 		}
-		
 		return toReturn;	
 		
 	}
@@ -114,6 +115,9 @@ public class alphaAlgo implements Algorithm {
 	
 	private Individual makeChild(Individual parentA, Individual parentB) {
 		//making sure no null
+		//debug
+		System.out.println("this are the children of " + parentA + " and " + parentB);
+			
 		Individual toReturn = new PrideIndividual();
 		int iterationNumberA = parentA.getPrideDNA().getDNA().size();
 		int iterationNumberB = parentB.getPrideDNA().getDNA().size();
@@ -128,7 +132,7 @@ public class alphaAlgo implements Algorithm {
 			}
 			toReturn.addChunk(toAdd);
 		}
-		
+		System.out.println("this is the child "+ toReturn.getPrideDNA().getDNA());
 		return toReturn;
 	}
 	@Override
