@@ -11,12 +11,13 @@ import view.MyGui;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * @author Yarden
  * API class 
  *this class is responsable for connecting to musimap API.
  *collects information about artist and songs in order to build to the user playlist by his DNA of music taste
+ * @author Yarden
+ 
  */
-public class Api {
+public class Api implements GeneralAPI {
 
 	private final String USER_AGENT = "Musimap PHP Sample";
 	private final int NUMBER_TRY = 3;
@@ -26,25 +27,29 @@ public class Api {
 	 * 
 	 * @return String - token for user
 	 * @throws Exception
+	 * Connects to musimap API using http request
 	 */
 	
-	private String getToken() throws Exception {
+	
+	@Override
+	public String getToken() throws Exception {
 		if (Api.Token != null) {
 			return Api.Token;
 		}
+		//connection to api
 		String url = "https://api.musimap.net/oauth/access_token";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
-		//add reuqest header
+		//add header to the request
 		con.setRequestMethod("POST");
 		con.setRequestProperty("User-Agent", USER_AGENT);
-
+		// our credentials 
 		Map<String,Object> params = new LinkedHashMap<>();
 		params.put("grant_type", "client_credentials");
 		params.put("client_id", "1r3mhw9nfhuv7tok");
 		params.put("client_secret", "l1nzfrajtvxrjorhsts1pf7e9td8jge9");
-      
+        // data of the request
 		StringBuilder postData = new StringBuilder();
 		for (Map.Entry<String,Object> param : params.entrySet()) {
 			if (postData.length() != 0) postData.append('&');
@@ -66,8 +71,8 @@ public class Api {
 		int responseCode = con.getResponseCode();
 		////System.out.println("\nSending 'POST' request to URL : " + url);
 		////System.out.println("Response Code : " + responseCode);
-
-		if (responseCode > 200) {
+		// reading the response from server
+		if (responseCode > 200) {  //request failed
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getErrorStream()));
 			String inputLine;
@@ -81,7 +86,7 @@ public class Api {
 			//print result
 			////System.out.println(response.toString());
 			return null;
-		} else {
+		} else { // request succeed
 			BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getInputStream()));
 			String inputLine;
@@ -91,7 +96,7 @@ public class Api {
 				response.append(inputLine);
 			}
 			in.close();
-		
+			// casting the response from string to json - in order to get the token
 			//print result
 			System.out.println(response.toString());
 			JSONObject json = new JSONObject(response.toString());
@@ -101,6 +106,7 @@ public class Api {
 			return token;
 		}	
 	}
+	
 	/**
 	 * 
 	 * @param s - artist name
@@ -250,7 +256,7 @@ String getArtistInfluancedFrom(String s) throws Exception {
 	String str= new String();
 	str= s;
 	String url = "https://api.musimap.net/artists/search?name="+str+"&limit=1&influences[0][direction]=from&influences[0][uid]=3B970FE1-83BB-4291-4F3E-226FBADEE365&influences[0][importance]=10&reference_provider=qobuz&output=details,references";
-	URL obj = new URL(url);
+	URL obj = new URL(url); // sending url to server
 	HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
 	//add reuqest header
@@ -266,10 +272,10 @@ String getArtistInfluancedFrom(String s) throws Exception {
 	////System.out.println("Response Code : " + responseCode);
 
 	if (responseCode > 200) {
-		if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) {
+		if (responseCode == 403 && Api.ForbiddenErrorTry < NUMBER_TRY) { //failed because token isnt update/ valid
 			Api.Token = null;
 			Api.ForbiddenErrorTry++;
-			this.getArtistInfluancedFrom(s);
+			this.getArtistInfluancedFrom(s); // trying to get new token
 		}
 		BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getErrorStream()));
@@ -951,6 +957,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 /**
  * @param array of artists names
  * @return the first DNA to the algorithm
+ * for each artist - collects the info - moods, influanced and more
  */
 		
    }
@@ -1493,5 +1500,7 @@ String getTrackAudioAnalysis(String str) throws Exception {
 		
 		
 	}
+	
+
 	
 }

@@ -22,9 +22,8 @@ import view.Fitness;
 import view.MyGui;
 //
 /**
- * 
- * @author Yarden
  * Main created to check the Api class
+ * @author Yarden
  */
 
 public class Main {

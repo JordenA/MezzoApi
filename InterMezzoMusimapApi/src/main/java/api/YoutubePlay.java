@@ -11,9 +11,9 @@ import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchListResponse;
 /**
- * 
+*this class responsable to open youtube window on google chrome in order to play songs
  * @author Yarden
- *this class responsable to open youtube window on google chrome in order to play songs
+ 
  */
 public class YoutubePlay {
 	/**
