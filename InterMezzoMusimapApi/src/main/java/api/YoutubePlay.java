@@ -39,7 +39,7 @@ public class YoutubePlay {
 		
         YouTube youtube = YoutubeApi.getYouTubeService();
         try {
-            HashMap<String, String> parameters = new HashMap<>();
+            HashMap<String, String> parameters = new HashMap<>(); //hashmap of parametrs to the youtube song
             parameters.put("part", "snippet");
             parameters.put("maxResults", "1"); // return only 1 res
             parameters.put("q", songArtist +" "+ songName); // the song we want to hear
@@ -60,21 +60,21 @@ public class YoutubePlay {
 
             SearchListResponse response = searchListByKeywordRequest.execute();
             System.out.println(response);
-            JSONObject json = new JSONObject(response.toString());
-			String videoId = json.getJSONArray("items").getJSONObject(0).getJSONObject("id").getString("videoId");
+            JSONObject json = new JSONObject(response.toString()); // getting json in the response
+			String videoId = json.getJSONArray("items").getJSONObject(0).getJSONObject("id").getString("videoId"); // taking the first song - its id and videoid
 		
-			URI uri = new URI("http://www.youtube.com/watch?v=" + videoId); // change uri to gui ??
+			URI uri = new URI("http://www.youtube.com/watch?v=" + videoId); // creating uri 
             if (Desktop.isDesktopSupported()) 
             {
               try 
               {
-                Desktop.getDesktop().browse(uri);
+                Desktop.getDesktop().browse(uri); // open browser
               }
               catch (IOException e) 
               { /* TODO: error handling */ }
             }
 			
-
+            // error
         } catch (GoogleJsonResponseException e) {
             e.printStackTrace();
             System.err.println("There was a service error: " +
