@@ -13,6 +13,13 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * This class is a wrapper class for the purpose of addressing all methods in generic way 
+ * it wraps all the readers, and because it contains all of them, it can create new individuals.
+ * 
+ * @author Tuval
+ *
+ */
 public class ReaderWrapper extends AbstractReader {
 
 	MoodHierarchyReader MHR;
@@ -24,7 +31,9 @@ public class ReaderWrapper extends AbstractReader {
 	Reader keywordReader;
 	Reader propertiesReader;
 	
-	
+	/**
+	 * the constarctor the initializes everything
+	 */
 	public ReaderWrapper(){
 		moodReader = new MoodReader();
 		InfuencedByReader = new InfluencedByReader();
@@ -36,12 +45,18 @@ public class ReaderWrapper extends AbstractReader {
 		MH = MHR.readMoodHierarchy("nuldld");
 		CR = new ChunkRandom(MH);
 	}
+	
 	@Override
 	public Chunk[] readChunk(String strToRead) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
+	/**
+	 * this method build a person by using all the reader
+	 * @param strToRead the output of the MUSIMAP API
+	 * @return an individual that is built from the input
+	 */
 	public Individual readIndividualChunks(String[] strToRead){
 		Individual toReturn;
 		//Chunk[] helper;
@@ -65,6 +80,13 @@ public class ReaderWrapper extends AbstractReader {
 		return toReturn;
 	}
 	
+	/**
+	 * This method creates a generation that is containg a few individulas as desined in the desicion
+	 * It is actually a generation(group of individuals)
+	 * 
+	 * @param strToRead output of charistaristics on the generation from API
+	 * @return an array of individuals with the input charistaristics
+	 */
 	public Individual[] ReadGenerationChunks(String[][] strToRead){
 		Individual[] toReturn  = new PrideIndividual[20];
 		for(int i = 0; i < strToRead.length ; i++) {
@@ -89,7 +111,13 @@ public class ReaderWrapper extends AbstractReader {
 		System.out.println(toReturn.toString());
 		return toReturn;
 	}
-	
+	/**
+	 * never used
+	 * 
+	 * @param toChop
+	 * @param numberForOutput
+	 * @return
+	 */
 	private Chunk[] chopChunks(Chunk[] toChop, int numberForOutput) {
 		Chunk[] toReturn;
 		switch(toChop.getClass().getName()) {

@@ -8,6 +8,7 @@ package musicData;
  *
  */
 public class Song { // when the user listens to a song - build this struct
+	
 	String songName;
 	String artistName;
 	String songUID;
