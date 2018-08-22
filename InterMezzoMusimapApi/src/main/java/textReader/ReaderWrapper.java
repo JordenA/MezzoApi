@@ -60,11 +60,32 @@ public class ReaderWrapper extends AbstractReader {
 	public synchronized Individual readIndividualChunks(String[] strToRead){
 		Individual toReturn;
 		//Chunk[] helper;
-		Chunk[] mds = CR.randomChunks(moodReader.readChunk(strToRead[0]));
-		Chunk[] infBy = CR.randomChunks(InfuencedByReader.readChunk(strToRead[1]));
-		Chunk[] infing = CR.randomChunks(InfluencingReader.readChunk(strToRead[2]));
-		Chunk[] kywrds = CR.randomChunks(keywordReader.readChunk(strToRead[3]));
-		Chunk[] prprts = CR.randomChunks(propertiesReader.readChunk(strToRead[4]));
+		Chunk[] mds, infBy, infing, kywrds, prprts;
+		try {
+			mds = CR.randomChunks(moodReader.readChunk(strToRead[0]));
+		}catch(Exception e) {
+			mds = CR.randomChunks(moodReader.readChunk());
+		}
+		try {
+			infBy = CR.randomChunks(InfuencedByReader.readChunk(strToRead[1]));
+		}catch(Exception e) {
+			infBy = CR.randomChunks(InfuencedByReader.readChunk());
+		}
+		try {
+			infing = CR.randomChunks(InfluencingReader.readChunk(strToRead[2]));
+		}catch(Exception e) {
+			infing = CR.randomChunks(InfluencingReader.readChunk());
+		}
+		try {
+			kywrds = CR.randomChunks(keywordReader.readChunk(strToRead[3]));
+		}catch(Exception e) {
+			kywrds = CR.randomChunks(keywordReader.readChunk());
+		}
+		try {
+			prprts = CR.randomChunks(propertiesReader.readChunk(strToRead[4]));
+		}catch(Exception e) {
+			prprts = CR.randomChunks(propertiesReader.readChunk());
+		}
 		//the new user DNA
 		List<Chunk> newDNA = new LinkedList<Chunk>();
 		//ading all chunks after randomizing and changing them to lists
@@ -91,31 +112,47 @@ public class ReaderWrapper extends AbstractReader {
 		System.out.println("ReadGenerationChunksReadGeneratio");
 		Individual[] toReturn  = new PrideIndividual[20];
 		for(int i = 0; i < strToRead.length ; i++) {
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-			Chunk[] mds = /*CR.randomChunks(*/moodReader.readChunk(strToRead[i][0])/*)*/;
-			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-			Chunk[] infBy = InfuencedByReader.readChunk(strToRead[i][1]);
-			System.out.println("##################################################");
-			Chunk[] infing = InfluencingReader.readChunk(strToRead[i][2]);
-			System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-			Chunk[] kywrds = keywordReader.readChunk(strToRead[i][3]);
-			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-			Chunk[] prprts = propertiesReader.readChunk(strToRead[i][4]);
+			Chunk [] mds, infBy, infing, kywrds, prprts;
+			try {
+				mds = /*CR.randomChunks(*/moodReader.readChunk(strToRead[i][0])/*)*/;
+			}catch(Exception e) {
+				mds = /*CR.randomChunks(*/moodReader.readChunk()/*)*/;
+			}
+			try {
+				infBy = InfuencedByReader.readChunk(strToRead[i][1]);
+			}catch(Exception e) {
+				infBy = InfuencedByReader.readChunk();
+			}
+			try {
+				infing = InfluencingReader.readChunk(strToRead[i][2]);
+			}catch(Exception e) {
+				infing = InfluencingReader.readChunk();
+			}
+			try {
+				kywrds = keywordReader.readChunk(strToRead[i][3]);
+			}catch(Exception e) {
+				kywrds = keywordReader.readChunk();
+			}
+			try {
+				prprts = propertiesReader.readChunk(strToRead[i][4]);
+			}catch(Exception e) {
+				prprts = propertiesReader.readChunk();
+			}
+
+
+
+
+
 			//the new user DNA
-			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 			List<Chunk> newDNA = new LinkedList<Chunk>();
 			//ading all chunks after randomizing and changing them to lists
-			System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 			newDNA.addAll(Arrays.asList(mds));
 			newDNA.addAll(Arrays.asList(infBy));
 			newDNA.addAll(Arrays.asList(infing));
 			newDNA.addAll(Arrays.asList(kywrds));		
 			newDNA.addAll(Arrays.asList(prprts));
-			System.out.println("***************************************************");
 			DNA toAssign = new PrideDNA();
-			System.out.println("((((((((((((((((((((((((((((((((((((((((((((((((((");
 			toAssign.initDNA(newDNA);
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			toReturn[i] = new PrideIndividual(toAssign);
 			
 		}
@@ -137,6 +174,15 @@ public class ReaderWrapper extends AbstractReader {
 		}
 		//Chunk[] toReturn = new 
 		
+		return null;
+	}
+
+	/**
+	 *  never used
+	 */
+	@Override
+	public Chunk[] readChunk() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	

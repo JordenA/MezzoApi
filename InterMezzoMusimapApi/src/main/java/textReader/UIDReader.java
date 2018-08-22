@@ -31,4 +31,13 @@ public class UIDReader extends AbstractReader{
 		return null;
 	}
 
+	/**
+	 * never used
+	 */
+	@Override
+	public Chunk[] readChunk() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

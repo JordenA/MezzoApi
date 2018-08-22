@@ -15,4 +15,10 @@ public class GenreReader extends AbstractReader {
 		return null;
 	}
 
+	@Override
+	public Chunk[] readChunk() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

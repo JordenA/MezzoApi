@@ -26,4 +26,13 @@ public class TagReader extends AbstractReader {
 		return toReturn;
 	}
 
+	/**
+	 * never used
+	 */
+	@Override
+	public Chunk[] readChunk() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

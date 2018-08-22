@@ -20,13 +20,9 @@ public class InfluencingReader extends AbstractReader {
 	public synchronized  Chunk[] readChunk(String strToRead) {
 		Chunk[] toReturn = new Chunk[3];
 		String influencing;
-//		if(strToRead.length() < 9) {
-//			influencing = this.getGeneric();
-//		}else {
-//			influencing = strToRead.substring(strToRead.lastIndexOf(" \\\"results\\\": ") + 1);
-//		}
-		//influencing = strToRead;
-		influencing = this.getGeneric();
+		
+		influencing = strToRead;
+		//influencing = this.getGeneric();
 		for(int i = 0; i < 3 ; i++) {
 			influencing = influencing.substring(influencing.indexOf("\"uid\":\"")+ "\"uid\":\"".length());
 			//removing everything from what we want to assign
@@ -41,6 +37,11 @@ public class InfluencingReader extends AbstractReader {
 		}
 		
 		return toReturn;
+	}
+	
+	@Override
+	public Chunk[] readChunk() {
+		return this.readChunk(this.getGeneric());
 	}
 
 	/**

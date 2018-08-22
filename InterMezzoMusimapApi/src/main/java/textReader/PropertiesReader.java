@@ -12,7 +12,7 @@ public class PropertiesReader extends AbstractReader {
 		String results;
 
 		results = strToRead;
-		results  = this.getGenericProperties(); 
+		//results  = this.getGenericProperties(); 
 		for(int i = 0; i < toReturn.length ; i++) {
 			results = results.substring(results.indexOf("\"uid\":\"")+ "\"uid\":\"".length());
 			//removing everything from what we want to assign
@@ -34,6 +34,11 @@ public class PropertiesReader extends AbstractReader {
 		}
 		
 		return toReturn;
+	}
+	
+	@Override
+	public Chunk[] readChunk() {
+		return this.readChunk(this.getGenericProperties());
 	}
 	
 	/**

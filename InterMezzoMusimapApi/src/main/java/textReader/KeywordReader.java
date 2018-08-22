@@ -18,8 +18,8 @@ public class KeywordReader extends AbstractReader {
 		Chunk[] toReturn = new Chunk[6];
 		String helper;
 
-		//helper = strToRead;
-		helper =  this.getGeneric();
+		helper = strToRead;
+		//helper =  this.getGeneric();
 		for(int i = 0; i < toReturn.length ; i++) {
 			helper = helper.substring(helper.indexOf("\"uid\":\"")+ "\"uid\":\"".length());
 			//removing everything from what we want to assign
@@ -34,6 +34,11 @@ public class KeywordReader extends AbstractReader {
 		}
 		
 		return toReturn;
+	}
+	
+	@Override
+	public Chunk[] readChunk() {
+		return this.readChunk(this.getGeneric());
 	}
 	
 	private String getGeneric() {

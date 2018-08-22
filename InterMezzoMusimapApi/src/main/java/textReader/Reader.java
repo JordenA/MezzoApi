@@ -27,5 +27,13 @@ public interface Reader {
 	 * @return a clean struing of just the UID
 	 */
 	public String readUID(String strToRead);
+	
+	/**
+	 * This method is generating an array of chunks from a generic input
+	 * The number of cells is determined in the implementation
+	 * 
+	 * @return an array of chunks that wrapp the data 
+	 */
+	public Chunk[] readChunk();
 
 }
