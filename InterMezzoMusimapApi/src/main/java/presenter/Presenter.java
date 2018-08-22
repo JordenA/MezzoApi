@@ -6,6 +6,11 @@ import model.Model;
 import musicData.Song;
 import view.View;
 
+/**
+ * 
+ * @author Tuval
+ *
+ */
 public class Presenter {
 	private View view;
 	private Model model;
