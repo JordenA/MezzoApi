@@ -96,7 +96,7 @@ public class Model {
 		return this.currentGeneration;
 	}
 	
-	public void setFirstGeneration(String[] pickedArtists) {
+	public synchronized void setFirstGeneration(String[] pickedArtists) {
 		System.out.println("\n**************STARTING FIRST GENERATION*********\n");
 		try {
 			//checkinmg where the error is

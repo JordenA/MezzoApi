@@ -65,7 +65,7 @@ public class SongReader {
 			
 		helper = helper.substring(helper.indexOf("uid\":\"")+ "uid\":\"".length());
 		String UID=helper.substring(0,helper.indexOf("\",\""));
-		helper=helper.substring(helper.indexOf("name\":\"")+"name\":\"".length());		
+		helper=helper.substring(helper.indexOf("name\":\"")+ "name\":\"".length());		
 		String SONG=helper.substring(0,helper.indexOf("\",\""));
 		helper=helper.substring(helper.indexOf(",\"nickname\":\"")+",\"nickname\":\"".length());		
 		String owner=helper.substring(0,helper.indexOf("\""));

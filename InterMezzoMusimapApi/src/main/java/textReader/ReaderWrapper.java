@@ -57,7 +57,7 @@ public class ReaderWrapper extends AbstractReader {
 	 * @param strToRead the output of the MUSIMAP API
 	 * @return an individual that is built from the input
 	 */
-	public Individual readIndividualChunks(String[] strToRead){
+	public synchronized Individual readIndividualChunks(String[] strToRead){
 		Individual toReturn;
 		//Chunk[] helper;
 		Chunk[] mds = CR.randomChunks(moodReader.readChunk(strToRead[0]));
@@ -87,7 +87,7 @@ public class ReaderWrapper extends AbstractReader {
 	 * @param strToRead output of charistaristics on the generation from API
 	 * @return an array of individuals with the input charistaristics
 	 */
-	public Individual[] ReadGenerationChunks(String[][] strToRead){
+	public synchronized Individual[] ReadGenerationChunks(String[][] strToRead){
 		System.out.println("ReadGenerationChunksReadGeneratio");
 		Individual[] toReturn  = new PrideIndividual[20];
 		for(int i = 0; i < strToRead.length ; i++) {

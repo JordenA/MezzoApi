@@ -18,12 +18,12 @@ public class MoodReader extends AbstractReader {
 
 	
 	@Override
-	public Chunk[] readChunk(String strToRead) {
+	public synchronized Chunk[] readChunk(String strToRead) {
 		Chunk[] toReturn = new Chunk[30];
 		String mood;
 
-		mood = strToRead;
-		//mood = this.getGenericMood();
+		//mood = strToRead;
+		mood = this.getGenericMood();
 		for(int i = 0; i < 30 ; i++) {
 			if(mood.length() < 9) {
 				break;

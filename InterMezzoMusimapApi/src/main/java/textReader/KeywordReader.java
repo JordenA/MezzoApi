@@ -14,11 +14,12 @@ public class KeywordReader extends AbstractReader {
 
 	
 	@Override
-	public Chunk[] readChunk(String strToRead) {
+	public synchronized  Chunk[] readChunk(String strToRead) {
 		Chunk[] toReturn = new Chunk[6];
 		String helper;
 
-		helper = this.getGeneric();
+		//helper = strToRead;
+		helper =  this.getGeneric();
 		for(int i = 0; i < toReturn.length ; i++) {
 			helper = helper.substring(helper.indexOf("\"uid\":\"")+ "\"uid\":\"".length());
 			//removing everything from what we want to assign

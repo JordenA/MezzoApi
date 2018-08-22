@@ -7,11 +7,12 @@ import DNA.PropertiesChunk;
 public class PropertiesReader extends AbstractReader {
 	
 	@Override
-	public Chunk[] readChunk(String strToRead) {
+	public synchronized  Chunk[] readChunk(String strToRead) {
 		Chunk[] toReturn = new Chunk[3];
 		String results;
 
-		results = this.getGenericProperties(); 
+		results = strToRead;
+		results  = this.getGenericProperties(); 
 		for(int i = 0; i < toReturn.length ; i++) {
 			results = results.substring(results.indexOf("\"uid\":\"")+ "\"uid\":\"".length());
 			//removing everything from what we want to assign
@@ -26,6 +27,10 @@ public class PropertiesReader extends AbstractReader {
 			results = results.substring(results.indexOf("\"importance\":") + "\"importance\":".length());
 			String propertyScore = results.substring(0, results.indexOf("}"));
 			toReturn[i] = new PropertiesChunk(propertyName, propertyCategory, UID, propertyScore);
+			System.out.println(propertyName);
+			System.out.println(UID);
+			System.out.println(propertyScore);
+			System.out.println(propertyCategory);
 		}
 		
 		return toReturn;
