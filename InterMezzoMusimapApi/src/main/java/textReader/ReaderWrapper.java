@@ -88,23 +88,34 @@ public class ReaderWrapper extends AbstractReader {
 	 * @return an array of individuals with the input charistaristics
 	 */
 	public Individual[] ReadGenerationChunks(String[][] strToRead){
+		System.out.println("ReadGenerationChunksReadGeneratio");
 		Individual[] toReturn  = new PrideIndividual[20];
 		for(int i = 0; i < strToRead.length ; i++) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			Chunk[] mds = /*CR.randomChunks(*/moodReader.readChunk(strToRead[i][0])/*)*/;
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 			Chunk[] infBy = InfuencedByReader.readChunk(strToRead[i][1]);
+			System.out.println("##################################################");
 			Chunk[] infing = InfluencingReader.readChunk(strToRead[i][2]);
+			System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 			Chunk[] kywrds = keywordReader.readChunk(strToRead[i][3]);
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 			Chunk[] prprts = propertiesReader.readChunk(strToRead[i][4]);
 			//the new user DNA
+			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 			List<Chunk> newDNA = new LinkedList<Chunk>();
 			//ading all chunks after randomizing and changing them to lists
+			System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 			newDNA.addAll(Arrays.asList(mds));
 			newDNA.addAll(Arrays.asList(infBy));
 			newDNA.addAll(Arrays.asList(infing));
 			newDNA.addAll(Arrays.asList(kywrds));		
 			newDNA.addAll(Arrays.asList(prprts));
+			System.out.println("***************************************************");
 			DNA toAssign = new PrideDNA();
+			System.out.println("((((((((((((((((((((((((((((((((((((((((((((((((((");
 			toAssign.initDNA(newDNA);
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			toReturn[i] = new PrideIndividual(toAssign);
 			
 		}

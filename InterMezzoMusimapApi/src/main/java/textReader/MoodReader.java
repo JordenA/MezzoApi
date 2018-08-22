@@ -22,6 +22,7 @@ public class MoodReader extends AbstractReader {
 		Chunk[] toReturn = new Chunk[30];
 		String mood;
 
+		//mood = strToRead;
 		mood = this.getGenericMood();
 		for(int i = 0; i < 30 ; i++) {
 			if(mood.length() < 9) {
@@ -37,9 +38,9 @@ public class MoodReader extends AbstractReader {
 			mood = mood.substring(mood.indexOf("\"importance\":") + "\"importance\":".length());
 			
 			String moodImportance = mood.substring(0, mood.indexOf("}"));
-			//System.out.println(moodToAssign);
-			//System.out.println(UID);
-			//System.out.println(moodImportance);
+			System.out.println(moodToAssign);
+			System.out.println(UID);
+			System.out.println(moodImportance);
 			
 			toReturn[i] = new MoodChunk(moodToAssign,UID,  moodImportance);
 		}

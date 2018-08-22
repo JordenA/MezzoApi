@@ -100,16 +100,21 @@ public class Model {
 		System.out.println("\n**************STARTING FIRST GENERATION*********\n");
 		try {
 			//checkinmg where the error is
+			System.out.println("11111111111111111111111111111111111111111111111111");
 			System.out.println("API request started");
+			System.out.println("2222222222222222222222222222222222222222222222");
 			String[][] helper = myApi.initFirstDNA(pickedArtists);
+			System.out.println("3333333333333333333333333333333333333333333333");
 			System.out.println("API request ended");
 			System.out.println("create first pool started");
+			System.out.println("444444444444444444444444444444444444444444444444444444");
 			this.createFirstPool(helper);
 			System.out.println("create first pool ended");
 		}catch(Exception e) {
+			System.out.println("is there an error?!?!");
 			System.out.println(e.getMessage());
 		}
-		System.out.println("\n**************ENDING FIRST GENERATION*********\n");
+		//System.out.println("\n**************ENDING FIRST GENERATION*********\n");
 	}
 	
 	public Song[] getSongByDNA() {

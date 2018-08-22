@@ -25,7 +25,7 @@ public class InfluencedByReader extends AbstractReader {
 			influencing = influencing.substring(influencing.indexOf("\"uid\":\"")+ "\"uid\":\"".length());
 			//removing everything from what we want to assign
 			String UID = influencing.substring(0, influencing.indexOf("\",\""));
-			influencing = influencing.substring(influencing.indexOf("\"nickname\":")+ 12);
+			influencing = influencing.substring(influencing.indexOf("\"name\":\"")+ "\"name\":\"".length());
 			//creating new empty mood
 			String influencingToAssign = influencing.substring(0, influencing.indexOf("\""));
 			//removing the mood we used

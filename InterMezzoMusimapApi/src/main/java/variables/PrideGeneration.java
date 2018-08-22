@@ -36,7 +36,7 @@ public class PrideGeneration implements Generation {
 	public PrideGeneration(Individual[] firstPool, MoodHierarchy MH){ 
 		//change from null
 		algo= new alphaAlgo(MH);
-		pool = firstPool;
+		//pool = firstPool;
 	}
 
 	@Override

@@ -2,7 +2,7 @@ package convertors;
 import java.util.Base64;
 
 /**
- * This class 
+ * This class is not used
  * @author Tuval
  *
  */
