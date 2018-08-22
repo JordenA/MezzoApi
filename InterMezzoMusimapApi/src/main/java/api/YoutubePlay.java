@@ -26,10 +26,10 @@ public class YoutubePlay {
 		String artist= new String();
 		String track= new String();
 		String uid= new String();
-		artist= "coldplay";
-		track= "clocks";
-		uid= "37BF6FEF-4685-EF3D-0BAA-3256FD0BF933"; // uid of a song
-		String[] arr = {"britney", "pink floyd", "david bowie", "katy perry", "bob marley", "the beatles", "bjork", "barry white", "edith piaf", "nirvana", "jimi hendrix", "justin bieber", "rihanna", "adele", "eminem", "cia", "shakira", "aqua", "prince", "taylor swift"};
+//		artist= "coldplay";
+//		track= "clocks";
+//		uid= "37BF6FEF-4685-EF3D-0BAA-3256FD0BF933"; // uid of a song
+//		String[] arr = {"britney", "pink floyd", "david bowie", "katy perry", "bob marley", "the beatles", "bjork", "barry white", "edith piaf", "nirvana", "jimi hendrix", "justin bieber", "rihanna", "adele", "eminem", "cia", "shakira", "aqua", "prince", "taylor swift"};
 		Api api = new Api();
 		String songArtist= new String();
 		String songName= new String();
