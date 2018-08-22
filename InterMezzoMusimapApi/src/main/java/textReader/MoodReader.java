@@ -22,8 +22,8 @@ public class MoodReader extends AbstractReader {
 		Chunk[] toReturn = new Chunk[30];
 		String mood;
 
-		//mood = strToRead;
-		mood = this.getGenericMood();
+		mood = strToRead;
+		//mood = this.getGenericMood();
 		for(int i = 0; i < 30 ; i++) {
 			if(mood.length() < 9) {
 				break;

@@ -41,7 +41,7 @@ import musicData.Song;
 /**
  * this class reads songs from the MUSIMAP API to use them after as objects
  * 
- * @author Tuval
+ * @author Itamar
  *
  */
 public class SongReader {
