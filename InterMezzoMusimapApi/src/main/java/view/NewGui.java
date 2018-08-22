@@ -137,6 +137,7 @@ public class NewGui implements View {
 		rightButton.setVisible(false);
 		leftButton.setVisible(false);
 	}
+	
 	@Override
 	public String[] getPickedArtists() {
 		rightButton.setVisible(true);

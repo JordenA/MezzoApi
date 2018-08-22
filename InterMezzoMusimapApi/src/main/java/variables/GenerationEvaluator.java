@@ -10,7 +10,9 @@ import java.util.Random;
 import DNA.Chunk;
 
 /**
- * This class evalutes and scores the top 10 song that were picked by the user
+ * This class evalutes and scores the top 10 song that were picked by the user -
+ *  and their rolles in the reproduction
+ *  
  * @author Tuval
  *
  */
@@ -20,12 +22,12 @@ public class GenerationEvaluator{
 	private Individual PastAlpha;
 	Comparator indiComparator;
 	
-	
+	/**
+	 * This is the constractor that recieves a list of songs to evaluate and saves them as parameters in the class
+	 * @param toEvaluate the list of songs picked by the user 
+	 */
 	public GenerationEvaluator(List<Individual> toEvaluate) {
 		this.toEvaluate = toEvaluate;
-		//for(Individual ind:toEvaluate) {
-		//	this.toEvaluate.add(ind);
-		//}
 		Date d = new Date();
 		Random rand = new Random(d.getTime());
 		int randomInt = rand.nextInt(toEvaluate.size());
@@ -33,6 +35,10 @@ public class GenerationEvaluator{
 		indiComparator = new IndividualComparator();
 	}
 	
+	/**
+	 * This method determines who is the alpha male of the group
+	 * @return the alpha male of the group
+	 */
 	public Individual getAlpha() {
 		Individual toReturn;
 		//first generation
@@ -51,6 +57,12 @@ public class GenerationEvaluator{
 		return toReturn;
 	}
 
+	/**
+	 * This method eveluated all the songs and their rolles in the generation and reproduction
+	 * and returns the individual that has the max similarity to the past strongst individual
+	 * 
+	 * @return individual that has the max similarity to the past strongst individual
+	 */
 	private Individual evaluateGeneration() {
 		Individual toReturn = new PrideIndividual();
 		int maxSimileraty = -1;
@@ -65,6 +77,11 @@ public class GenerationEvaluator{
 		return toReturn;
 	}
 	
+	/**
+	 * checks for each individual how similar they are to the past stronest one and returns the score
+	 * @param toEvaluate the individual to check 
+	 * @return how similar they are as an int - level of similarity
+	 */
 	private int evaluateIndividual(Individual toEvaluate) {
 		int i = 0;
 		for(Chunk c: PastAlpha.getPrideDNA().getDNA()) {
@@ -103,7 +120,12 @@ public class GenerationEvaluator{
 	}
 
 
-	
+	/**
+	 * this is a comparator class between two individuals, to chack their similarity
+	 * compartor for priode individual
+	 * @author Tuval
+	 *
+	 */
 	class IndividualComparator implements  Comparator<Individual>{
 
 		@Override

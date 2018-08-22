@@ -4,6 +4,11 @@ import DNA.Chunk;
 import DNA.PropertiesChunk;
 import DNA.TagChunk;
 
+/**
+ * not active
+ * @author Tuval
+ *
+ */
 public class TagReader extends AbstractReader {
 
 	@Override
@@ -15,7 +20,6 @@ public class TagReader extends AbstractReader {
 			String tagName = results.substring(0, results.indexOf("\""));
 			//removing the mood we used
 			results = results.substring(results.indexOf("\",\"") + 3);
-			System.out.println(tagName);
 			toReturn[i] = new TagChunk(tagName,"this-is-tag-no-UID", "100");
 		}
 		

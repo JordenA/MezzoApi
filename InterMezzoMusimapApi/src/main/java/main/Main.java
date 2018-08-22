@@ -17,7 +17,7 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
 		
-		/**
+		
 		Model m = new Model();
 		try {
 		View v = new ConsoleView();
@@ -27,7 +27,7 @@ public class Main {
 			System.out.println(e.getMessage());
 			return;
 		}
-		 **/
+		
 	
 		/**
 		Song[]test=new Song[3]; //song Example
@@ -44,6 +44,7 @@ public class Main {
 		List<Song> l2=new ArrayList<Song>(); //res example for playsongs
 	**/
 		
+		/**
 		//MoodReader mr = new MoodReader();
 		//mr.readChunk(strToRead);
 		NewGui vv = new NewGui();
@@ -51,7 +52,7 @@ public class Main {
 		vv.getPickedArtists();
 		//l1=vv.playSongs(test);
 		//l2=vv.playSongs(test1);
-		
+		**/
 
 	
 		

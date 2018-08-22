@@ -3,10 +3,18 @@ package textReader;
 import DNA.Chunk;
 import DNA.InfluencingChunk;
 
+/**
+ * not active
+ * 
+ * @author Tuval
+ *
+ */
 public class UIDReader extends AbstractReader{
 
 	
-	
+	/**
+	 * not active
+	 */
 	public String readUID(String strToRead) {
 		String toReturn;
 		String UID;
@@ -14,9 +22,7 @@ public class UIDReader extends AbstractReader{
 		UID = UID.substring(UID.indexOf("\"uid\":\":")+ 8);
 		//creating new empty mood
 		toReturn = UID.substring(0, UID.indexOf("\""));
-		System.out.println(toReturn);
-		return toReturn;
-		
+		return toReturn;		
 	}
 
 	@Override

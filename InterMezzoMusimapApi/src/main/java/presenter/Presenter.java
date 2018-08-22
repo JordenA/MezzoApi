@@ -6,6 +6,11 @@ import model.Model;
 import musicData.Song;
 import view.View;
 
+/**
+ * 
+ * @author Tuval
+ *
+ */
 public class Presenter {
 	private View view;
 	private Model model;
@@ -18,14 +23,15 @@ public class Presenter {
 	
 	public void run() {
 		String[] artists = view.getPickedArtists();	
-		System.out.println("the artist is " + artists[0]);
+		//System.out.println("the artist is " + artists[0]);
 		model.setFirstGeneration(artists);
-		System.out.println("the artist is " + artists[0]);
+		//System.out.println("the artist is " + artists[0]);
 		while(true) {
 			Song[] songs = model.getSongByDNA();
 			System.out.println("the song is " + songs[0]);
 			view.setSongs(songs);
 			List<Song> pickedSongs = view.playSongs(songs);
+			System.out.println("sending " + pickedSongs.size() + " songs to the model");
 			model.addToNextGeneration(pickedSongs);		
 		}
 	}

@@ -2,20 +2,24 @@ package textReader;
 
 import DNA.Chunk;
 import DNA.InfluencingChunk;
-
+/**
+ * 
+ * this class is an key words by reader as defiened in the API of MUSIMAP
+ * For more information on this look up musimap.com
+ * 
+ * @author Tuval
+ *
+ */
 public class KeywordReader extends AbstractReader {
 
 	
 	@Override
-	public Chunk[] readChunk(String strToRead) {
+	public synchronized  Chunk[] readChunk(String strToRead) {
 		Chunk[] toReturn = new Chunk[6];
 		String helper;
-//		if(strToRead.length() < 9) {
-//			helper = this.getGeneric();
-//		}else {
-//			helper = strToRead.substring(strToRead.indexOf("\"keywords\":[{") + "\"keywords\":[{".length());
-//		}
-		helper = this.getGeneric();
+
+		//helper = strToRead;
+		helper =  this.getGeneric();
 		for(int i = 0; i < toReturn.length ; i++) {
 			helper = helper.substring(helper.indexOf("\"uid\":\"")+ "\"uid\":\"".length());
 			//removing everything from what we want to assign
@@ -26,8 +30,6 @@ public class KeywordReader extends AbstractReader {
 			//removing the mood we used
 			helper = helper.substring(helper.indexOf("importance\":") + "importance\":".length());
 			String keywordImportance = helper.substring(0, helper.indexOf("}"));
-			System.out.println(keywordName);
-			System.out.println(keywordImportance);
 			toReturn[i] = new InfluencingChunk(keywordName, UID, keywordImportance);
 		}
 		

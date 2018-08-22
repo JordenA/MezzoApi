@@ -44,13 +44,30 @@ public class Model {
 	}
 	
 	public void createFirstPool(String[][] firstUserInput) {
-		Individual[] firstPool = RR.ReadGenerationChunks(firstUserInput);	
+		System.out.println("\n**************STARTING FIRST POOL*********\n");
+		System.out.println("\n**************ENTERING READ CHUNKS*********\n");
+		Individual[] firstPool = RR.ReadGenerationChunks(firstUserInput);
+		System.out.println("this is the first generation");
+		int j = 0;
+		for(Individual i:firstPool) {
+			
+			System.out.println("this is the inidividual number " + j + " " + i.getPrideDNA().getDNA().toString());
+			j++;
+		}	
+		System.out.println("\n**************EXITING READ CHUNKS*********\n");
+		System.out.println("\n**************ENTERING GENERATION CREATION*********\n");
 		currentGeneration = new PrideGeneration(firstPool, MH);	
+		System.out.println("\n**************EXITING GENERATION CREATION*********\n");
+		System.out.println("\n**************ENTERING REPREDUCTION*********\n");
 		currentGeneration.reproduce(firstPool);
+		System.out.println("\n**************EXITING REPREDUCTION*********\n");
+		System.out.println("\n**************ENDING FIRST POOL*********\n");
 	}
 	
 	public void repreduce() {
+		System.out.println("\n**************STARTING REPREDUCTION*********\n");
 		currentGeneration.reproduce(nextGeneration);
+		System.out.println("\n**************ENDING REPREDUCTION*********\n");
 	}
 	
 	public void addToNextGeneration(Individual toAdd) {
@@ -58,7 +75,7 @@ public class Model {
 		nextGeneration.add(toAdd);
 		//checking if generation is full
 		if(nextGeneration.size() == 10) {
-			if(ConsoleView.getFitness() >= 70) {
+			if(ConsoleView.getFitness() >= 90) {
 				System.out.println("we did it!");
 				System.exit(0);
 			}
@@ -79,12 +96,25 @@ public class Model {
 		return this.currentGeneration;
 	}
 	
-	public void setFirstGeneration(String[] pickedArtists) {
+	public synchronized void setFirstGeneration(String[] pickedArtists) {
+		System.out.println("\n**************STARTING FIRST GENERATION*********\n");
 		try {
-			this.createFirstPool(myApi.initFirstDNA(pickedArtists));
+			//checkinmg where the error is
+			System.out.println("11111111111111111111111111111111111111111111111111");
+			System.out.println("API request started");
+			System.out.println("2222222222222222222222222222222222222222222222");
+			String[][] helper = myApi.initFirstDNA(pickedArtists);
+			System.out.println("3333333333333333333333333333333333333333333333");
+			System.out.println("API request ended");
+			System.out.println("create first pool started");
+			System.out.println("444444444444444444444444444444444444444444444444444444");
+			this.createFirstPool(helper);
+			System.out.println("create first pool ended");
 		}catch(Exception e) {
+			System.out.println("is there an error?!?!");
 			System.out.println(e.getMessage());
-		}	
+		}
+		//System.out.println("\n**************ENDING FIRST GENERATION*********\n");
 	}
 	
 	public Song[] getSongByDNA() {
@@ -103,13 +133,22 @@ public class Model {
 	}
 	
 	public void addToNextGeneration(List<Song> toAdd) {
-		
+		System.out.println("model recieved " + toAdd.size() + " songs");
 		for(int i = 0; i < toAdd.size(); i ++) {
 			try {
-				Individual temp = RR.readIndividualChunks(myApi.getSongInfoBySongUid(toAdd.get(i).getsongUID()));
+				System.out.println("model is reqyesting song info on song " + toAdd.get(i).getsongUID());
+				String[] data = myApi.getSongInfoBySongUid(toAdd.get(i).getsongUID());
+				System.out.println("we recieved the following information for this song: ");
+				int j = 0;
+				for(String str:data) {
+					System.out.println("this is the " + j + " element of the song " + str);
+				}		
+				Individual temp = RR.readIndividualChunks(data);
+				System.out.println("this is the temp individual " + temp.getPrideDNA().getDNA() + "  we recieved for the song " + toAdd.get(i).getsongUID()  );
 				this.addToNextGeneration(temp);
 			}catch(Exception e) {
-				System.out.println(e.getMessage());
+				System.out.println("is there a problem??????");
+				System.out.println(e.getMessage() + " i is now " + i + " and size is " + toAdd.size());
 			}
 		}
 	}

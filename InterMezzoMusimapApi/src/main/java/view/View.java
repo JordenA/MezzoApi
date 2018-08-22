@@ -4,6 +4,12 @@ import java.util.List;
 
 import musicData.Song;
 
+/**
+ * this is the generic View for this project
+ * it allows to recieve a list of songs from the user, or send list of songs to play to the user
+ * @author Tuval
+ *
+ */
 public interface View {
 	
 	public String[] getPickedArtists();
