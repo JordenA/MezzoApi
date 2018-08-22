@@ -5,12 +5,15 @@ import java.util.List;
 import java.util.Scanner;
 
 import musicData.Song;
+import presenter.Presenter;
 
 public class ConsoleView implements View {
 
 	Scanner sc;
 	static int numOfChosen;
 	static int numOfSongs;
+	//
+	Presenter p;
 	
 	public ConsoleView() {
 		sc = new Scanner(System.in); 
@@ -66,6 +69,11 @@ public class ConsoleView implements View {
 	public void setSongs(Song[] toAssign) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void setPresenter(Presenter p) {
+		this.p = p;
 	}
 	
 	

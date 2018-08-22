@@ -5,11 +5,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import com.google.api.services.youtube.model.Playlist;
+
 import DNA.Chunk;
 import DNA.DNA;
 import api.Api;
 import musicData.MoodHierarchy;
 import musicData.Song;
+import playlist.PlaylistDNAPride;
+import playlist.playlistDNA;
 import textReader.MoodHierarchyReader;
 import textReader.ReaderWrapper;
 import textReader.SongReader;
@@ -22,6 +26,7 @@ import view.ConsoleView;
 
 public class Model {
 	
+	playlistDNA myPlayList;
 	GenerationEvaluator GE;
 	ReaderWrapper RR = new ReaderWrapper();
 	Generation currentGeneration;
@@ -40,6 +45,7 @@ public class Model {
 		currentGeneration = new PrideGeneration(MH);
 		myApi = new Api();
 		SR = new SongReader();
+		myPlayList = new PlaylistDNAPride();
 		
 	}
 	
@@ -77,7 +83,8 @@ public class Model {
 		if(nextGeneration.size() == 10) {
 			if(ConsoleView.getFitness() >= 90) {
 				System.out.println("we did it!");
-				
+				//adding the new generation
+				myPlayList.setPlaylist(currentGeneration);
 				System.exit(0);
 			}
 			GE = new GenerationEvaluator(nextGeneration);

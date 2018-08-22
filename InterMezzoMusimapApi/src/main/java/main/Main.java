@@ -22,6 +22,7 @@ public class Main {
 		try {
 		View v = new ConsoleView();
 			Presenter p = new Presenter(v, m);
+			v.setPresenter(p);
 			p.run();
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
