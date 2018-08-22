@@ -77,6 +77,7 @@ public class Model {
 		if(nextGeneration.size() == 10) {
 			if(ConsoleView.getFitness() >= 90) {
 				System.out.println("we did it!");
+				
 				System.exit(0);
 			}
 			GE = new GenerationEvaluator(nextGeneration);

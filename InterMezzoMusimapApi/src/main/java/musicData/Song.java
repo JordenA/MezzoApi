@@ -4,7 +4,7 @@ package musicData;
  * This class is a representation of a song, it has the charistristics of a song
  * It is used to show the song to the user 
  * 
- * @author Tuval
+ * @author Itamar
  *
  */
 public class Song { // when the user listens to a song - build this struct

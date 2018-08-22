@@ -57,7 +57,7 @@ public class PrideGeneration implements Generation {
 	public void reproduce(List<Individual> pickedSongs) {
 		Individual[] helper = new PrideIndividual[20];
 		pickedSongs.toArray(helper);
-		System.out.println("worked?");
+		//System.out.println("worked?");
 		this.reproduce(helper);
 	}
 
